@@ -1,6 +1,7 @@
 @import "tailwindcss";
+@import "tailwind-animations";
 
-root {
+@theme {
   --color-bg: #0b1e2d;
   --color-surface: #122c3e;
   --color-border: #1a3a52;
@@ -13,71 +14,8 @@ root {
   --font-display: "Syne", sans-serif;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-sans);
-  line-height: 1.6;
-}
-
-::selection {
-  background-color: var(--color-accent);
-  color: var(--color-bg);
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-display);
-  line-height: 1.2;
-  color: var(--color-text);
-}
-
-p {
-  color: var(--color-muted);
-  line-height: 1.7;
-}
-
-a {
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: var(--color-accent-hover);
 }
