@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
+import { Inter, Syne } from "next/font/google";
 import { siteMetadata } from "@/lib/data/metadata";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -62,7 +75,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
+    <html lang="es" className={`${inter.variable} ${syne.variable}`}>
       <body>{children}</body>
     </html>
   );
