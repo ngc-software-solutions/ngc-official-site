@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Syne } from "next/font/google";
 import { siteMetadata } from "@/lib/data/metadata";
-import Navbar from "@/components/ui/Navbar";
 import "./globals.css";
+import Navbar from "@/components/ui/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -77,7 +77,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${inter.variable} ${syne.variable}`}>
-      <body>
+      <body className="relative">
         <Navbar />
         {children}
       </body>
