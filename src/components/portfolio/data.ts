@@ -24,13 +24,7 @@ export const blocks: PortfolioBlock[] = [
           "Plataforma que estandariza y centraliza el flujo completo de requisiciones de materiales y servicios — desde que un empleado levanta una solicitud hasta que el área de compras la cotiza, asigna y cierra — eliminando la pérdida de información en correos y mensajes informales.",
         status: "En Producción",
         stack: ["React", "Spring Boot", "MySQL", "Docker"],
-      },
-      {
-        title: "Sistema de Gestión de Energía ISO 50001",
-        description:
-          "Plataforma que acompaña a organizaciones de alto consumo energético en todo su proceso de certificación ISO 50001 — centralizando documentación, análisis de consumos por uso final, cálculo de emisiones CO₂ y generación automática de reportes listos para auditoría.",
-        status: "En Producción",
-        stack: ["React", "Spring Boot", "MySQL", "Docker"],
+        videoUrl: `https://www.youtube.com/embed/-51ME3M-YPU${params}-51ME3M-YPU`,
       },
     ],
     pages: [
