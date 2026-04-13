@@ -30,7 +30,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-90 w-[calc(100%-2rem)] ${scrolled ? "max-w-3xl md:top-6" : "max-w-2xl md:top-18"} transition-all duration-300`}
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-30 w-[calc(100%-2rem)] ${scrolled ? "max-w-3xl md:top-6" : "max-w-2xl md:top-18"} transition-all duration-300`}
     >
       <nav className="animate-fade-in bg-white/10 backdrop-blur-[5px] border border-white/20 px-4 py-2 rounded-full flex items-center justify-between gap-4">
         <div className="flex gap-2 items-center animate-fade-in-up">
