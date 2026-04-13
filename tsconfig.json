@@ -28,6 +28,9 @@
       ],
       "@reactbits/*": [
         "./src/components/ui/reactbits/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
       ]
     }
   },
