@@ -7,7 +7,7 @@ import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-screen overflow-hidden" id="inicio">
       <div className="absolute inset-0">
         <Aurora
           colorStops={["#259dc2", "#0b1e2d", "#259dc2"]}
