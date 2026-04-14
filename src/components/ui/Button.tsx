@@ -10,6 +10,9 @@ interface ButtonProps {
   className?: string;
 }
 
+const scrollTo = (id: string) =>
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
 const sharedTransition: Transition = {
   duration: 2.4,
   repeat: Infinity,
@@ -47,11 +50,22 @@ export default function Button({
 
   const { animate, transition } = floatAnimation[variant];
 
+  const isScroll = href.startsWith("#");
+
   return (
     <motion.div animate={animate} transition={transition}>
-      <Link href={href} className={`${base} ${variants[variant]} ${className}`}>
-        {children}
-      </Link>
+      {isScroll ? (
+        <button
+          onClick={() => scrollTo(href.slice(1))}
+          className={`${base} ${variants[variant]} ${className}`}
+        >
+          {children}
+        </button>
+      ) : (
+        <Link href={href} className={`${base} ${variants[variant]} ${className}`}>
+          {children}
+        </Link>
+      )}
     </motion.div>
   );
 }
