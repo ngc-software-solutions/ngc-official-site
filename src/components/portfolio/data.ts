@@ -77,6 +77,7 @@ export const blocks: PortfolioBlock[] = [
           "Plataforma que digitaliza la operación completa de Clínica San Juan — gestión de pacientes, expedientes clínicos, agenda de consultas y reportes — con control de acceso diferenciado para médicos, enfermeras y administradores.",
         status: "En Producción",
         stack: ["React", "Spring Boot", "MySQL", "Docker"],
+        videoUrl: `https://www.youtube.com/embed/7mM-IL4iIsI${params}7mM-IL4iIsI`,
       },
     ],
     pages: [],
