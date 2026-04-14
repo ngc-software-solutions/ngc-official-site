@@ -69,7 +69,7 @@ export const blocks: PortfolioBlock[] = [
     badge: "Sector Salud",
     title: "Digitalización Clínica — Sector Salud",
     description:
-      "Sistema a medida que reemplaza procesos en papel por una plataforma centralizada de gestión médica para una clínica en Cuernavaca, Morelos.",
+      "Sistema a medida que reemplaza procesos en papel por una plataforma centralizada de gestión médica para una clínica en Tetela del Volcán, Morelos.",
     systems: [
       {
         title: "Sistema de Gestión de Expedientes Clínicos",
