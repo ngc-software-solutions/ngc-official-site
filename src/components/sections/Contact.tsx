@@ -80,13 +80,10 @@ export default function Contact() {
   return (
     <section
       id="contacto"
-      className="relative py-28 px-6 overflow-hidden timeline-view animate-blurred-fade-in animate-range-[entry_10%_contain_30%]"
+      className="relative py-28 px-6 z-10 timeline-view animate-blurred-fade-in animate-range-[entry_10%_contain_30%]"
     >
-      <div className="absolute inset-0 bg-linear-to-b from-bg via-surface/20 to-bg pointer-events-none" />
-
       <div className="relative z-10 mx-auto max-w-5xl">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24 lg:items-start">
-          {/* Left — copy */}
           <div className="flex flex-col gap-6">
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-surface/40 px-4 py-1.5 text-xs text-muted backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
@@ -121,7 +118,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right — form */}
           <form
             onSubmit={handleSubmit(onSubmit)}
             noValidate
