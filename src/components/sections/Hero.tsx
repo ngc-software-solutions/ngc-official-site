@@ -25,7 +25,7 @@ export default function Hero() {
           NGC Software Solutions · Cuernavaca, México
         </div>
 
-        <h1 className="font-display mb-5 max-w-3xl text-5xl font-bold tracking-tight text-text md:text-6xl lg:text-7xl animate-slide-up-fade animate-delay-150">
+        <h1 className="font-display mb-5 max-w-3xl text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-bold tracking-tight text-text animate-slide-up-fade animate-delay-150">
           Software que{" "}
           <span className="text-accent">
             escala, transforma y genera resultados
