@@ -100,7 +100,7 @@ export default function Footer() {
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
           <p className="text-xs text-muted/60">
-            © 2025 NGC Software Solutions. Todos los derechos reservados.
+            © 2026 NGC Software Solutions. Todos los derechos reservados.
           </p>
 
           <div className="flex items-center gap-4">
