@@ -1,7 +1,7 @@
 import type { PortfolioBlock } from "@components/portfolio/types";
 
 const params =
-  "?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&rel=0&playlist=";
+  "?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&rel=0&vq=hd720&playlist=";
 
 export const blocks: PortfolioBlock[] = [
   {
