@@ -80,7 +80,7 @@ export default function Contact() {
   return (
     <section
       id="contacto"
-      className="relative py-28 px-6 z-10 timeline-view animate-blurred-fade-in animate-range-[entry_5%_contain_10%]"
+      className="relative py-28 px-6 z-10 timeline-view animate-blurred-fade-in animate-range-[entry_0%_contain_1%]"
     >
       <div className="relative z-10 mx-auto max-w-5xl">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24 lg:items-start">
