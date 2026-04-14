@@ -63,7 +63,7 @@ export default function Team() {
   return (
     <section
       id="equipo"
-      className="relative py-28 px-6 overflow-hidden timeline-view animate-blurred-fade-in animate-range-[entry_10%_contain_30%]"
+      className="relative py-28 px-6 overflow-hidden timeline-view animate-blurred-fade-in animate-range-[entry_5%_contain_10%]"
     >
       <div className="absolute inset-0 bg-linear-to-b from-bg via-surface/20 to-bg pointer-events-none" />
 
