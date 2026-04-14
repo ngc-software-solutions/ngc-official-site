@@ -61,7 +61,7 @@ export const blocks: PortfolioBlock[] = [
         description:
           "Dashboard centralizado que permite a los equipos internos gestionar formularios entrantes, postulaciones, vacantes y métricas de negocio con control de acceso por rol.",
         status: "En Producción",
-        videoUrl: `https://www.youtube.com/embed/y5dK4Z51EFg${params}y5dK4Z51EFg`,
+        videoUrl: `https://www.youtube.com/embed/QV0bkNM6iYI${params}QV0bkNM6iYI`,
       },
     ],
   },
