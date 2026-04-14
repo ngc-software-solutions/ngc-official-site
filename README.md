@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NGC Software Solutions — Sitio Oficial
 
-## Getting Started
+Sitio web oficial de **NGC Software Solutions**, empresa de desarrollo de software a medida con base en Cuernavaca, Morelos, México.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+| Capa | Tecnología |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Lenguaje | TypeScript |
+| Estilos | Tailwind CSS v4 |
+| Animaciones | Framer Motion, tailwind-animations |
+| Formularios | React Hook Form + Yup |
+| Gráficos WebGL | OGL (Aurora shader) |
+| Iconos | Heroicons |
+| Fuentes | Inter (sans), Syne (display) |
+| Package manager | pnpm |
+
+## Estructura del proyecto
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # Layout raíz — Navbar, UpButton, metadata
+│   ├── page.tsx            # Página principal (single-page)
+│   └── globals.css
+├── components/
+│   ├── sections/           # Secciones de la página
+│   │   ├── Hero.tsx
+│   │   ├── Services.tsx
+│   │   ├── Portfolio.tsx
+│   │   ├── Team.tsx
+│   │   ├── Contact.tsx
+│   │   └── Footer.tsx
+│   ├── portfolio/          # Componentes del portafolio
+│   │   ├── PortfolioBlock.tsx
+│   │   ├── SystemsCarousel.tsx
+│   │   ├── SystemCard.tsx
+│   │   ├── PageCard.tsx
+│   │   ├── VideoModal.tsx
+│   │   └── SectionLabel.tsx
+│   └── ui/                 # Componentes reutilizables
+│       ├── Navbar.tsx
+│       ├── Navlink.tsx
+│       ├── Button.tsx
+│       ├── UpButton.tsx
+│       ├── ScrollIndicator.tsx
+│       └── reactbits/
+│           └── Aurora.tsx  # Shader WebGL de fondo animado
+└── lib/
+    └── data/
+        └── metadata.ts     # Datos globales del sitio (nombre, URL, contacto)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Secciones
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Hero** — Presentación principal con Aurora animada y CTAs de scroll
+- **Servicios** — Tarjetas con los 6 servicios principales de NGC
+- **Portafolio** — Proyectos destacados con carrusel, videos y tarjetas
+- **Equipo** — Los tres fundadores con links a GitHub, LinkedIn y portafolio
+- **Contacto** — Formulario validado que abre el cliente de correo + link a WhatsApp
+- **Footer** — Links de navegación, redes sociales y Aurora decorativa
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Desarrollo local
 
-## Learn More
+```bash
+pnpm install
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm dev      # Servidor de desarrollo
+pnpm build    # Build de producción
+pnpm start    # Servidor de producción
+pnpm lint     # Linter
+```
 
-## Deploy on Vercel
+## Contacto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Web: [ngcsoftwaresolutions.com](https://ngcsoftwaresolutions.com/)
+- Correo: ngcsoftwaresolutions@gmail.com
+- WhatsApp: +52 56-6026-7647
+- GitHub: [github.com/ngc-software-solutions](https://github.com/ngc-software-solutions)
+- Ubicación: Cuernavaca, Morelos, México
