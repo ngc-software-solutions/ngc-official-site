@@ -3,6 +3,7 @@ import { Inter, Syne } from "next/font/google";
 import { siteMetadata } from "@/lib/data/metadata";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
+import UpButton from "@/components/ui/UpButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -80,6 +81,7 @@ export default function RootLayout({
       <body className="relative">
         <Navbar />
         {children}
+        <UpButton />
       </body>
     </html>
   );
