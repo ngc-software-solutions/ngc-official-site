@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { siteMetadata } from "@/lib/data/metadata";
 
 export const runtime = "edge";
+export const dynamic = "force-static";
 export const alt = siteMetadata.name;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
