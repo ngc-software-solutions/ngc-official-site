@@ -26,43 +26,51 @@ export const blocks: PortfolioBlock[] = [
         stack: ["React", "Spring Boot", "MySQL", "Docker"],
         videoUrl: `https://www.youtube.com/embed/zGDKg9FvWD8${params}zGDKg9FvWD8`,
       },
-    ],
-    pages: [
-      {
-        title: "Sitio Corporativo",
-        description:
-          "Presencia digital principal de la empresa con catálogo de servicios, portafolio de clientes industriales y portal de reclutamiento.",
-        status: "En Producción",
-        videoUrl: `https://www.youtube.com/embed/J5WLkJ4yB8g${params}J5WLkJ4yB8g`,
-      },
-      {
-        title: "Gestión Energética — Landing Page",
-        description:
-          "Página de aterrizaje comercial que presenta el sistema de gestión energética a industrias con obligación legal de implementar un SGEn.",
-        status: "En Producción",
-        videoUrl: `https://www.youtube.com/embed/hPmufJPyKnU${params}hPmufJPyKnU`,
-      },
-      {
-        title: "Monitoreo Eléctrico — Landing Page",
-        description:
-          "Landing orientada a responsables de planta que necesitan visibilidad sobre su consumo eléctrico y cumplimiento normativo en tiempo real.",
-        status: "En Producción",
-        videoUrl: `https://www.youtube.com/embed/HkGRpXlsX7I${params}HkGRpXlsX7I`,
-      },
-      {
-        title: "Submedición Inteligente — Landing Page",
-        description:
-          "Sitio de aterrizaje para un sistema de submedición eléctrica inteligente e inalámbrico dirigido a industrias manufactureras y de administración de edificios.",
-        status: "En Producción",
-        videoUrl: `https://www.youtube.com/embed/Eui6RX98GUY${params}Eui6RX98GUY`,
-      },
       {
         title: "Panel de Administración Interna",
         description:
           "Dashboard centralizado que permite a los equipos internos gestionar formularios entrantes, postulaciones, vacantes y métricas de negocio con control de acceso por rol.",
         status: "En Producción",
-        videoUrl: `https://www.youtube.com/embed/QV0bkNM6iYI${params}QV0bkNM6iYI`,
+        stack: ["React", "Spring Boot", "MySQL", "Docker"],
+        videoUrl: `https://www.youtube.com/embed/CzYr-h1TY8Q${params}CzYr-h1TY8Q`,
       },
+    ],
+    pages: [
+      // {
+      //   title: "Sitio Corporativo",
+      //   description:
+      //     "Presencia digital principal de la empresa con catálogo de servicios, portafolio de clientes industriales y portal de reclutamiento.",
+      //   status: "En Producción",
+      //   videoUrl: `https://www.youtube.com/embed/J5WLkJ4yB8g${params}J5WLkJ4yB8g`,
+      // },
+      // {
+      //   title: "Gestión Energética — Landing Page",
+      //   description:
+      //     "Página de aterrizaje comercial que presenta el sistema de gestión energética a industrias con obligación legal de implementar un SGEn.",
+      //   status: "En Producción",
+      //   videoUrl: `https://www.youtube.com/embed/hPmufJPyKnU${params}hPmufJPyKnU`,
+      // },
+      // {
+      //   title: "Monitoreo Eléctrico — Landing Page",
+      //   description:
+      //     "Landing orientada a responsables de planta que necesitan visibilidad sobre su consumo eléctrico y cumplimiento normativo en tiempo real.",
+      //   status: "En Producción",
+      //   videoUrl: `https://www.youtube.com/embed/HkGRpXlsX7I${params}HkGRpXlsX7I`,
+      // },
+      // {
+      //   title: "Submedición Inteligente — Landing Page",
+      //   description:
+      //     "Sitio de aterrizaje para un sistema de submedición eléctrica inteligente e inalámbrico dirigido a industrias manufactureras y de administración de edificios.",
+      //   status: "En Producción",
+      //   videoUrl: `https://www.youtube.com/embed/Eui6RX98GUY${params}Eui6RX98GUY`,
+      // },
+      // {
+      //   title: "Panel de Administración Interna",
+      //   description:
+      //     "Dashboard centralizado que permite a los equipos internos gestionar formularios entrantes, postulaciones, vacantes y métricas de negocio con control de acceso por rol.",
+      //   status: "En Producción",
+      //   videoUrl: `https://www.youtube.com/embed/QV0bkNM6iYI${params}QV0bkNM6iYI`,
+      // },
     ],
   },
   {
@@ -87,15 +95,16 @@ export const blocks: PortfolioBlock[] = [
     title: "Plataforma SaaS de Prospección Comercial — Sector Agroindustrial",
     description:
       "Sitio de marketing para una startup B2B que democratiza la digitalización comercial para PYMEs y empresas manufactureras en México — con prospección geolocalizada, CRM integrado y asistente virtual con IA.",
-    systems: [],
-    pages: [
+    systems: [
       {
         title: "Kaptia — Sitio Web",
         description:
           "Landing de marketing para una plataforma SaaS de prospección comercial geolocalizada dirigida a equipos de ventas en el sector agroindustrial mexicano.",
         status: "En Producción",
+        stack: ["React", "Next.js"],
         videoUrl: `https://www.youtube.com/embed/QPQZgiveDZQ${params}QPQZgiveDZQ`,
       },
     ],
+    pages: [],
   },
 ];
