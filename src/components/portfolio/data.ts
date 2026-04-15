@@ -24,7 +24,7 @@ export const blocks: PortfolioBlock[] = [
           "Plataforma que estandariza y centraliza el flujo completo de requisiciones de materiales y servicios — desde que un empleado levanta una solicitud hasta que el área de compras la cotiza, asigna y cierra — eliminando la pérdida de información en correos y mensajes informales.",
         status: "En Producción",
         stack: ["React", "Spring Boot", "MySQL", "Docker"],
-        videoUrl: `https://www.youtube.com/embed/-51ME3M-YPU${params}-51ME3M-YPU`,
+        videoUrl: `https://www.youtube.com/embed/zGDKg9FvWD8${params}zGDKg9FvWD8`,
       },
     ],
     pages: [
@@ -36,21 +36,21 @@ export const blocks: PortfolioBlock[] = [
         videoUrl: `https://www.youtube.com/embed/J5WLkJ4yB8g${params}J5WLkJ4yB8g`,
       },
       {
-        title: "Gevensi — Landing Page",
+        title: "Gestión Energética — Landing Page",
         description:
           "Página de aterrizaje comercial que presenta el sistema de gestión energética a industrias con obligación legal de implementar un SGEn.",
         status: "En Producción",
         videoUrl: `https://www.youtube.com/embed/hPmufJPyKnU${params}hPmufJPyKnU`,
       },
       {
-        title: "Monitor i3 — Landing Page",
+        title: "Monitoreo Eléctrico — Landing Page",
         description:
           "Landing orientada a responsables de planta que necesitan visibilidad sobre su consumo eléctrico y cumplimiento normativo en tiempo real.",
         status: "En Producción",
         videoUrl: `https://www.youtube.com/embed/HkGRpXlsX7I${params}HkGRpXlsX7I`,
       },
       {
-        title: "SISMEDIA — Landing Page",
+        title: "Submedición Inteligente — Landing Page",
         description:
           "Sitio de aterrizaje para un sistema de submedición eléctrica inteligente e inalámbrico dirigido a industrias manufactureras y de administración de edificios.",
         status: "En Producción",
@@ -75,7 +75,7 @@ export const blocks: PortfolioBlock[] = [
         title: "Sistema de Gestión de Expedientes Clínicos",
         description:
           "Plataforma que digitaliza la operación completa de Clínica San Juan — gestión de pacientes, expedientes clínicos, agenda de consultas y reportes — con control de acceso diferenciado para médicos, enfermeras y administradores.",
-        status: "En Producción",
+        status: "En Desarrollo",
         stack: ["React", "Spring Boot", "MySQL", "Docker"],
         videoUrl: `https://www.youtube.com/embed/7mM-IL4iIsI${params}7mM-IL4iIsI`,
       },
