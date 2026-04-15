@@ -19,10 +19,10 @@ const syne = Syne({
 
 export const metadata: Metadata = {
   title: {
-    default: siteMetadata.name,
+    default: siteMetadata.seoTitle,
     template: `%s | ${siteMetadata.name}`,
   },
-  description: siteMetadata.tagline,
+  description: siteMetadata.seoDescription,
   metadataBase: new URL(siteMetadata.url),
   keywords: [
     "desarrollo de software",
@@ -40,23 +40,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_MX",
-    url: siteMetadata.name,
-    title: siteMetadata.name,
-    description: siteMetadata.tagline,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: siteMetadata.name,
-      },
-    ],
+    url: siteMetadata.url,
+    title: siteMetadata.seoTitle,
+    description: siteMetadata.seoDescription,
   },
   twitter: {
     card: "summary_large_image",
-    title: siteMetadata.name,
-    description: siteMetadata.tagline,
-    images: ["/og-image.png"],
+    title: siteMetadata.seoTitle,
+    description: siteMetadata.seoDescription,
   },
   robots: {
     index: true,
