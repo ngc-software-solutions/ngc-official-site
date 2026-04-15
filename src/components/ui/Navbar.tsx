@@ -6,6 +6,7 @@ import {
   WrenchScrewdriverIcon,
   BriefcaseIcon,
   UserGroupIcon,
+  QueueListIcon,
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
@@ -14,6 +15,7 @@ import Navlink from "@/components/ui/Navlink";
 const navItems = [
   { id: "inicio", label: "Inicio", icon: HomeIcon },
   { id: "servicios", label: "Servicios", icon: WrenchScrewdriverIcon },
+  { id: "proceso", label: "Proceso", icon: QueueListIcon },
   { id: "portafolio", label: "Portafolio", icon: BriefcaseIcon },
   { id: "equipo", label: "Equipo", icon: UserGroupIcon },
 ];
@@ -30,7 +32,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-30 w-[calc(100%-2rem)] ${scrolled ? "max-w-3xl md:top-6" : "max-w-2xl md:top-18"} transition-all duration-300`}
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-30 w-[calc(100%-2rem)] ${scrolled ? "max-w-4xl md:top-6" : "max-w-3xl md:top-18"} transition-all duration-300`}
     >
       <nav className="animate-fade-in bg-white/10 backdrop-blur-[5px] border border-white/20 px-4 py-2 rounded-full flex items-center justify-between gap-4">
         <div className="flex gap-2 items-center animate-fade-in-up">
