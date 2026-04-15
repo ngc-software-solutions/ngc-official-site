@@ -82,4 +82,20 @@ export const blocks: PortfolioBlock[] = [
     ],
     pages: [],
   },
+  {
+    badge: "Sector Agroindustrial",
+    title: "Plataforma SaaS de Prospección Comercial — Sector Agroindustrial",
+    description:
+      "Sitio de marketing para una startup B2B que democratiza la digitalización comercial para PYMEs y empresas manufactureras en México — con prospección geolocalizada, CRM integrado y asistente virtual con IA.",
+    systems: [],
+    pages: [
+      {
+        title: "Kaptia — Sitio Web",
+        description:
+          "Landing de marketing para una plataforma SaaS de prospección comercial geolocalizada dirigida a equipos de ventas en el sector agroindustrial mexicano.",
+        status: "En Producción",
+        videoUrl: `https://www.youtube.com/embed/WVKBd8PROt4${params}WVKBd8PROt4`,
+      },
+    ],
+  },
 ];
