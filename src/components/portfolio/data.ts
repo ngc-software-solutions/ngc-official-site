@@ -94,7 +94,7 @@ export const blocks: PortfolioBlock[] = [
         description:
           "Landing de marketing para una plataforma SaaS de prospección comercial geolocalizada dirigida a equipos de ventas en el sector agroindustrial mexicano.",
         status: "En Producción",
-        videoUrl: `https://www.youtube.com/embed/WVKBd8PROt4${params}WVKBd8PROt4`,
+        videoUrl: `https://www.youtube.com/embed/QPQZgiveDZQ${params}QPQZgiveDZQ`,
       },
     ],
   },
