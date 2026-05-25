@@ -27,7 +27,7 @@ const team = [
     photo: "/team/carlos_martinez_gomez.webp",
     github: "https://github.com/Carlos-Mtzg",
     linkedin: "https://www.linkedin.com/in/carlos-mtzg",
-    portfolio: "https://carlos-mtzg.github.io/carlos-portfolio/",
+    portfolio: "https://carlosmtzg.dev/",
   },
 ];
 
