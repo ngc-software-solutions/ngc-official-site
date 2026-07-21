@@ -16,7 +16,7 @@ export const blocks: PortfolioBlock[] = [
           "Sistema que permite a operadores del sector eléctrico monitorear parámetros de red en vivo, verificar cumplimiento del Código de Red V2.0 mexicano y construir diagramas interactivos de su infraestructura — con alertas automáticas antes de que un problema se convierta en falla o multa.",
         status: "En Producción",
         stack: ["React", "Spring Boot", "MySQL", "WebSockets", "Docker"],
-        videoUrl: `https://www.youtube.com/embed/TdS_9xjhMs4${params}TdS_9xjhMs4`,
+        videoUrl: `https://www.youtube.com/embed/mN6xWBGA2e0${params}mN6xWBGA2e0`,
       },
       {
         title: "Sistema de Gestión de Compras Interno",
