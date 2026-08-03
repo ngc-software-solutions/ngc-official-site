@@ -83,9 +83,9 @@ export const blocks: PortfolioBlock[] = [
         title: "Sistema de Gestión de Expedientes Clínicos",
         description:
           "Plataforma que digitaliza la operación completa de Clínica San Juan — gestión de pacientes, expedientes clínicos, agenda de consultas y reportes — con control de acceso diferenciado para médicos, enfermeras y administradores.",
-        status: "En Desarrollo",
+        status: "En Producción",
         stack: ["React", "Spring Boot", "MySQL", "Docker"],
-        videoUrl: `https://www.youtube.com/embed/7mM-IL4iIsI${params}7mM-IL4iIsI`,
+        videoUrl: `https://www.youtube.com/embed/IW0GanjK8fk${params}IW0GanjK8fk`,
       },
     ],
     pages: [],
