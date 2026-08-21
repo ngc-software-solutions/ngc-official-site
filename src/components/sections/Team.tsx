@@ -8,6 +8,7 @@ const team = [
     github: "https://github.com/JayrGilGalicia",
     linkedin:
       "https://www.linkedin.com/in/jayr-gil-galicia-jim%C3%A9nez-1053a3359/",
+    portfolio: "https://jayrgalicia.dev/es",
   },
   {
     name: "Alexis Leonardo Noriega Rangel",
