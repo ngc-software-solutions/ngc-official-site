@@ -76,7 +76,7 @@ export default function Hero() {
 
           {/* Risk reversal sits right beside the offer. */}
           <div
-            className="animate-rise absolute bottom-0 left-0 flex items-center gap-3 rounded-xl border border-border bg-surface px-4 py-3 shadow-lg shadow-black/5 dark:shadow-none"
+            className="animate-rise absolute -bottom-2 right-0 flex items-center gap-3 rounded-xl border border-border bg-surface px-4 py-3 shadow-lg shadow-black/5 dark:shadow-none"
             style={delay(700)}
           >
             <SealCheckIcon size={20} className="text-accent-icon" aria-hidden="true" />
