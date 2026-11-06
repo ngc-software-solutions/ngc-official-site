@@ -1,9 +1,43 @@
+import {
+  Code,
+  GithubLogo,
+  Globe,
+  Handshake,
+  LinkedinLogo,
+  Pulse,
+  Scales,
+} from "@phosphor-icons/react/ssr";
+import Reveal from "@/components/ui/Reveal";
+
+const reasons = [
+  {
+    Icon: Code,
+    title: "Hablas con quien programa",
+    text: "Tres fundadores, sin intermediarios ni vendedores de por medio.",
+  },
+  {
+    Icon: Pulse,
+    title: "Sistemas en producción, no prototipos",
+    text: "Hoy tenemos 9 sistemas funcionando con usuarios reales.",
+  },
+  {
+    Icon: Scales,
+    title: "Conocemos la normativa de tu sector",
+    text: "El Código de Red en energía y la NOM 004 en salud.",
+  },
+  {
+    Icon: Handshake,
+    title: "No desaparecemos al entregar",
+    text: "Te acompañamos con mantenimiento, mejoras y soporte.",
+  },
+];
+
 const team = [
   {
     name: "Jayr Gil Galicia Jiménez",
-    role: "Fundador · Backend & Fullstack",
+    role: "Fundador · Backend y Fullstack",
     description:
-      "Diseña y construye los sistemas de negocio que sostienen cada producto — desde la base de datos hasta la pantalla.",
+      "Diseña y construye los sistemas de negocio que sostienen cada producto, desde la base de datos hasta la pantalla.",
     photo: "/team/jayr_gil_galicia_jimenez.webp",
     github: "https://github.com/JayrGilGalicia",
     linkedin:
@@ -12,19 +46,19 @@ const team = [
   },
   {
     name: "Alexis Leonardo Noriega Rangel",
-    role: "Fundador · DevOps & Cloud",
+    role: "Fundador · DevOps y Cloud",
     description:
-      "Lleva los sistemas de desarrollo a producción con automatización, infraestructura como código y cultura SRE.",
+      "Lleva los sistemas a producción con automatización, infraestructura como código y cultura SRE.",
     photo: "/team/alexis_leonardo_noriega_rangel.webp",
     github: "https://github.com/Leo-Noriega",
     linkedin: "https://www.linkedin.com/in/leo-noriega/",
-    portfolio: "https://leo-noriega.github.io/portfolio/",
+    portfolio: "https://leo-noriega.dev/",
   },
   {
     name: "Carlos Martínez Gómez",
-    role: "Fundador · Backend & Arquitectura",
+    role: "Fundador · Backend y Arquitectura",
     description:
-      "Construye los cimientos técnicos de cada proyecto y se asegura de que lo que el usuario ve sea igual de robusto que lo que corre por detrás.",
+      "Construye los cimientos técnicos de cada proyecto y cuida que lo que el usuario ve sea igual de sólido que lo que corre por detrás.",
     photo: "/team/carlos_martinez_gomez.webp",
     github: "https://github.com/Carlos-Mtzg",
     linkedin: "https://www.linkedin.com/in/carlos-mtzg",
@@ -32,124 +66,105 @@ const team = [
   },
 ];
 
-import { GlobeAltIcon } from "@heroicons/react/24/outline";
-
-function GitHubIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-    </svg>
-  );
-}
-
-function LinkedInIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-  );
-}
+const linkClass =
+  "flex size-10 items-center justify-center rounded-lg text-muted transition-colors duration-300 ease-base hover:bg-surface-alt hover:text-text active:scale-[0.98]";
 
 export default function Team() {
   return (
     <section
       id="equipo"
-      className="relative py-28 px-6 overflow-hidden timeline-view animate-blurred-fade-in animate-range-[entry_0%_contain_1%] bg-surface-alt"
+      aria-labelledby="equipo-titulo"
+      className="px-6 py-24"
     >
-      <div className="relative z-10 mx-auto max-w-5xl">
-        <div className="mb-16 text-center">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs text-muted backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            Quiénes somos
-          </div>
+      <div className="mx-auto max-w-7xl">
+        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+          <Reveal>
+            <p className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-1 caption-4 text-muted">
+              <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
+              Por qué NGC
+            </p>
+            <h2
+              id="equipo-titulo"
+              className="mt-6 heading-4 text-text md:heading-2"
+            >
+              Hablas directo con quienes construyen tu sistema
+            </h2>
+            <p className="mt-6 max-w-md body-3 text-muted">
+              Somos tres fundadores que escriben código, toman las decisiones
+              técnicas y responden por cada entrega.
+            </p>
+          </Reveal>
 
-          <h2 className="mb-4 text-4xl font-bold tracking-tight text-text md:text-5xl">
-            Las personas detrás de{" "}
-            <span className="text-text">cada proyecto</span>
-          </h2>
-
-          <p className="mx-auto max-w-xl text-base leading-relaxed text-muted">
-            Tres fundadores que escriben código, toman decisiones técnicas y
-            entregan resultados — sin intermediarios.
-          </p>
+          <ul className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-16">
+            {reasons.map(({ Icon, title, text }, i) => (
+              <li key={title}>
+                <Reveal delay={i * 60}>
+                  <span className="flex size-10 items-center justify-center rounded-lg border border-border bg-surface text-accent-icon">
+                    <Icon size={20} aria-hidden="true" />
+                  </span>
+                  <h3 className="mt-4 title-3 text-text">{title}</h3>
+                  <p className="mt-1 body-6 text-muted">{text}</p>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {team.map((member) => (
-            <div
-              key={member.name}
-              className="group relative flex flex-col items-center rounded-2xl border border-border bg-surface p-8 backdrop-blur-sm transition-all duration-300 hover:border-accent/50 hover:bg-surface hover:shadow-lg hover:shadow-accent/10"
-            >
-              <div className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-accent/5" />
-
-              <div className="relative mb-6">
-                <div className="size-24 rounded-full border-2 border-border overflow-hidden transition-colors duration-300 group-hover:border-accent/50">
-                  <img
-                    src={member.photo}
-                    alt={member.name}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              </div>
-
-              <div className="relative flex flex-col items-center text-center flex-1">
-                <p className="mb-1 text-xs font-medium text-text tracking-wide uppercase">
-                  {member.role}
-                </p>
-
-                <h3 className="mb-3 font-semibold text-text leading-snug">
-                  {member.name}
-                </h3>
-
-                <p className="text-sm leading-relaxed text-muted flex-1">
-                  {member.description}
-                </p>
-
-                <div className="mt-6 flex items-center gap-4">
-                  <a
-                    href={member.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted hover:text-text transition-colors duration-200"
-                    aria-label={`GitHub de ${member.name}`}
-                  >
-                    <GitHubIcon className="size-5" />
-                  </a>
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted hover:text-text transition-colors duration-200"
-                    aria-label={`LinkedIn de ${member.name}`}
-                  >
-                    <LinkedInIcon className="size-5" />
-                  </a>
-                  {member.portfolio && (
+        <h3 className="mt-24 caption-3 text-muted">El equipo</h3>
+        <ul className="mt-6 grid gap-6 md:grid-cols-3">
+          {team.map((member, i) => (
+            <li key={member.name}>
+              <Reveal delay={i * 80} className="h-full">
+                <article className="flex h-full flex-col rounded-2xl border border-border bg-surface p-6">
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={member.photo}
+                      alt={`Foto de ${member.name}`}
+                      width={64}
+                      height={64}
+                      loading="lazy"
+                      className="size-16 shrink-0 rounded-xl object-cover"
+                    />
+                    <div className="min-w-0">
+                      <p className="title-3 text-text">{member.name}</p>
+                      <p className="caption-2 text-muted">{member.role}</p>
+                    </div>
+                  </div>
+                  <p className="mt-4 body-6 text-muted">{member.description}</p>
+                  <div className="mt-auto flex gap-1 pt-6">
+                    <a
+                      href={member.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`GitHub de ${member.name}`}
+                      className={linkClass}
+                    >
+                      <GithubLogo size={20} aria-hidden="true" />
+                    </a>
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`LinkedIn de ${member.name}`}
+                      className={linkClass}
+                    >
+                      <LinkedinLogo size={20} aria-hidden="true" />
+                    </a>
                     <a
                       href={member.portfolio}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted hover:text-text transition-colors duration-200"
                       aria-label={`Portafolio de ${member.name}`}
+                      className={linkClass}
                     >
-                      <GlobeAltIcon className="size-5" />
+                      <Globe size={20} aria-hidden="true" />
                     </a>
-                  )}
-                </div>
-              </div>
-            </div>
+                  </div>
+                </article>
+              </Reveal>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
