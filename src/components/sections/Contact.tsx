@@ -12,6 +12,7 @@ import {
   SealCheckIcon,
   WhatsappLogoIcon,
 } from "@phosphor-icons/react";
+import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import { siteMetadata } from "@/lib/data/metadata";
@@ -266,6 +267,17 @@ export default function Contact() {
                 : "Enviar mi proyecto"}
               <ArrowRightIcon size={16} weight="bold" aria-hidden="true" />
             </button>
+
+            <p className="caption-5 text-muted">
+              Al enviar aceptas que tratemos tus datos conforme a nuestro{" "}
+              <Link
+                href="/privacidad"
+                className="text-text underline decoration-border underline-offset-4 hover:decoration-text"
+              >
+                aviso de privacidad
+              </Link>
+              .
+            </p>
 
             <div aria-live="polite" className="min-h-5">
               {state.kind === "sent" && (
