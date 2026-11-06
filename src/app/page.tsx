@@ -1,5 +1,4 @@
 import Hero from "@/components/sections/Hero";
-import Metrics from "@/components/sections/Metrics";
 import Services from "@/components/sections/Services";
 import Portfolio from "@/components/sections/Portfolio";
 import Team from "@/components/sections/Team";
@@ -11,7 +10,6 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Metrics />
       <Services />
       <Workflow />
       <Portfolio />
