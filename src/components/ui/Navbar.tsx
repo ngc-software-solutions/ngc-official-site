@@ -9,6 +9,7 @@ import { siteMetadata } from "@/lib/data/metadata";
 
 const navItems = [
   { id: "servicios", label: "Servicios" },
+  { id: "modelos", label: "Modelos" },
   { id: "proceso", label: "Proceso" },
   { id: "portafolio", label: "Proyectos" },
   { id: "equipo", label: "Equipo" },
@@ -78,7 +79,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-4 z-40 flex justify-center px-4">
       <nav
         aria-label="Principal"
-        className="relative z-10 flex w-full items-center gap-2 rounded-2xl border border-border bg-surface/70 py-2 pr-2 pl-3 backdrop-blur-xl md:w-auto"
+        className="relative z-10 flex w-full items-center gap-2 rounded-2xl border border-border bg-surface/70 py-2 pr-2 pl-3 backdrop-blur-xl lg:w-auto"
       >
         <a
           href="#inicio"
@@ -86,10 +87,10 @@ export default function Navbar() {
           className="mr-2 flex items-center gap-2 rounded-lg"
         >
           <Logo className="size-8" />
-          <span className="title-4 text-text">Software Solutions</span>
+          <span className="whitespace-nowrap title-4 text-text">Software Solutions</span>
         </a>
 
-        <ul className="hidden items-center md:flex">
+        <ul className="hidden items-center lg:flex">
           {navItems.map(({ id, label }) => {
             const current = active === id;
             return (
@@ -115,7 +116,7 @@ export default function Navbar() {
           <Button
             href={siteMetadata.whatsappUrl}
             size="sm"
-            className="max-md:hidden"
+            className="max-lg:hidden"
           >
             <WhatsappLogo size={16} weight="bold" aria-hidden="true" />
             WhatsApp
@@ -126,7 +127,7 @@ export default function Navbar() {
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            className="flex size-10 items-center justify-center rounded-full text-text transition-colors duration-300 ease-base hover:bg-surface-alt active:scale-[0.98] md:hidden"
+            className="flex size-10 items-center justify-center rounded-full text-text transition-colors duration-300 ease-base hover:bg-surface-alt active:scale-[0.98] lg:hidden"
           >
             <MenuIcon open={menuOpen} />
           </button>
@@ -137,7 +138,7 @@ export default function Navbar() {
       <div
         id="mobile-menu"
         inert={!menuOpen}
-        className={`fixed inset-0 bg-bg/95 backdrop-blur-2xl transition-opacity duration-300 ease-base md:hidden ${
+        className={`fixed inset-0 bg-bg/95 backdrop-blur-2xl transition-opacity duration-300 ease-base lg:hidden ${
           menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
