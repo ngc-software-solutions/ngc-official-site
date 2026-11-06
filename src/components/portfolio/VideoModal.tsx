@@ -1,49 +1,49 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { XIcon } from "@phosphor-icons/react";
 
 interface VideoModalProps {
   videoUrl: string;
+  title: string;
   isOpen: boolean;
   onClose: () => void;
 }
 
-function buildModalUrl(url: string): string {
-  const parsed = new URL(url);
-  parsed.searchParams.set("controls", "1");
-  parsed.searchParams.delete("mute");
-  return parsed.toString();
-}
+const subscribe = () => () => {};
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function VideoModal({
   videoUrl,
+  title,
   isOpen,
   onClose,
 }: VideoModalProps) {
-  const [mounted, setMounted] = useState(false);
+  // true only on the client, so the portal never renders during SSR.
+  const mounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
+    if (!isOpen) return;
+    const previous = document.activeElement as HTMLElement | null;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
-    if (isOpen) {
-      document.addEventListener("keydown", onKey);
-      document.body.style.overflow = "hidden";
-    }
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      previous?.focus();
     };
   }, [isOpen, onClose]);
-
-  const modalUrl = buildModalUrl(videoUrl);
 
   if (!mounted) return null;
 
@@ -51,40 +51,47 @@ export default function VideoModal({
     <AnimatePresence>
       {isOpen && (
         <motion.div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Demo en video: ${title}`}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.3, ease }}
           onClick={onClose}
         >
-          <div className="absolute inset-0 bg-black/20 backdrop-blur-xs" />
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
           <motion.div
-            className="relative z-10 w-full max-w-5xl"
-            initial={{ scale: 0.88, opacity: 0, y: 12 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.88, opacity: 0, y: 12 }}
-            transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
+            className="relative w-full max-w-5xl"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 24 }}
+            transition={{ duration: 0.5, ease }}
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={onClose}
-              className="absolute -top-10 right-0 flex items-center gap-1.5 text-white/50 hover:text-white transition-colors duration-150 text-sm"
-            >
-              <XMarkIcon className="size-4" />
-              <span>ESC</span>
-            </button>
+            <div className="mb-3 flex items-center justify-between gap-4">
+              <p className="truncate title-4 text-white">{title}</p>
+              <button
+                ref={closeRef}
+                type="button"
+                onClick={onClose}
+                className="flex shrink-0 items-center gap-2 rounded-lg px-3 py-2 button-sm text-white/70 transition-colors duration-300 ease-base hover:bg-white/10 hover:text-white focus-visible:outline-white"
+              >
+                <XIcon size={16} aria-hidden="true" />
+                Cerrar
+              </button>
+            </div>
 
-            <div className="relative aspect-video overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
+            <div className="aspect-video overflow-hidden rounded-2xl bg-black ring-1 ring-white/10">
               <iframe
-                src={modalUrl}
-                title="Demo del proyecto"
+                src={videoUrl}
+                title={`Demo en video: ${title}`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 className="h-full w-full"
               />
-              <div className="absolute inset-0 z-10" />
             </div>
           </motion.div>
         </motion.div>

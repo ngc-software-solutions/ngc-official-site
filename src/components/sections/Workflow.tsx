@@ -1,46 +1,25 @@
-import {
-  MagnifyingGlassIcon,
-  Square3Stack3DIcon,
-  CodeBracketIcon,
-  RocketLaunchIcon,
-  LifebuoyIcon,
-} from "@heroicons/react/24/outline";
+import { WhatsappLogoIcon } from "@phosphor-icons/react/ssr";
+import Button from "@/components/ui/Button";
+import Reveal from "@/components/ui/Reveal";
+import { siteMetadata } from "@/lib/data/metadata";
 
 const steps = [
   {
-    number: "01",
-    icon: MagnifyingGlassIcon,
-    title: "Levantamiento",
-    description:
-      "Entendemos tu operación, tus cuellos de botella y tus objetivos antes de escribir una sola línea de código.",
+    title: "Diagnóstico",
+    text: "Conocemos tu operación y te decimos qué conviene construir y qué no.",
+    free: true,
   },
   {
-    number: "02",
-    icon: Square3Stack3DIcon,
-    title: "Arquitectura",
-    description:
-      "Diseñamos la solución técnica, la documentamos y la validamos contigo antes de arrancar el desarrollo.",
+    title: "Diseño y validación",
+    text: "Te mostramos las pantallas y el flujo antes de programar.",
   },
   {
-    number: "03",
-    icon: CodeBracketIcon,
-    title: "Desarrollo",
-    description:
-      "Construimos por etapas con revisiones quincenales para que siempre sepas en qué punto va tu proyecto.",
+    title: "Desarrollo por etapas",
+    text: "Revisiones cada dos semanas para que veas avance real.",
   },
   {
-    number: "04",
-    icon: RocketLaunchIcon,
-    title: "Entrega",
-    description:
-      "Hacemos el deploy, capacitamos a tu equipo y ponemos el sistema en marcha contigo.",
-  },
-  {
-    number: "05",
-    icon: LifebuoyIcon,
-    title: "Soporte",
-    description:
-      "No desaparecemos al entregar. Te acompañamos con mantenimiento, mejoras y soporte continuo.",
+    title: "Entrega y acompañamiento",
+    text: "Ponemos el sistema en marcha, capacitamos a tu equipo y seguimos dando soporte.",
   },
 ];
 
@@ -48,52 +27,86 @@ export default function Workflow() {
   return (
     <section
       id="proceso"
-      className="relative py-28 px-6 overflow-hidden timeline-view animate-blurred-fade-in animate-range-[entry_0%_contain_1%] bg-[#f0f7fb] border-t-4 border-b-4 border-accent"
+      aria-labelledby="proceso-titulo"
+      className="bg-surface-alt px-6 py-24"
     >
-      <div className="relative z-10 mx-auto max-w-5xl">
-        <div className="mb-16 text-center">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#c5dbe8] bg-white/60 px-4 py-1.5 text-xs text-[#4a6a80] backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            Nuestro proceso
-          </div>
-
-          <h2 className="font-display mb-4 text-4xl font-bold tracking-tight text-bg md:text-5xl">
-            De la idea al sistema{" "}
-            <span className="text-accent">que tu negocio necesita</span>
-          </h2>
-
-          <p className="mx-auto max-w-xl text-base leading-relaxed text-[#4a6a80]">
-            Un proceso claro y transparente para que sepas exactamente qué
-            esperar en cada etapa de tu proyecto.
+      <div className="mx-auto max-w-7xl">
+        <Reveal className="max-w-170">
+          <p className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-1 caption-4 text-muted">
+            <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
+            Cómo trabajamos
           </p>
-        </div>
+          <h2
+            id="proceso-titulo"
+            className="mt-6 heading-4 text-text md:heading-2"
+          >
+            De la idea a tu sistema en cuatro pasos
+          </h2>
+          <p className="mt-6 body-3 text-muted md:title-2">
+            Sabes en qué va tu proyecto en cada etapa y lo validas antes de
+            avanzar a la siguiente.
+          </p>
+        </Reveal>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {steps.map(({ number, icon: Icon, title, description }) => (
-            <div
-              key={number}
-              className="group relative rounded-2xl border border-[#c5dbe8] bg-white/70 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent/50 hover:bg-white/90 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-1"
-            >
-              <div className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-accent/5" />
+        <ol className="mt-16 grid gap-x-6 lg:grid-cols-4">
+          {steps.map(({ title, text, free }, i) => {
+            const last = i === steps.length - 1;
+            return (
+              <li
+                key={title}
+                className={`relative grid grid-cols-[48px_minmax(0,1fr)] gap-x-4 lg:block ${last ? "" : "pb-8 lg:pb-0"}`}
+              >
+                {/* Connectors: horizontal on desktop, vertical on mobile. */}
+                {!last && (
+                  <>
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-6 left-16 -right-6 hidden h-px bg-border lg:block"
+                    />
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-16 bottom-0 left-6 w-px bg-border lg:hidden"
+                    />
+                  </>
+                )}
 
-              <div className="relative">
-                <p className="mb-3 font-mono text-2xl font-bold text-accent/30 group-hover:text-accent/60 transition-colors duration-300">
-                  {number}
-                </p>
+                <Reveal delay={i * 80}>
+                  <span
+                    className={`flex size-12 items-center justify-center rounded-xl heading-6 tabular-nums ${
+                      free
+                        ? "bg-accent text-on-accent"
+                        : "border border-border bg-surface text-text"
+                    }`}
+                  >
+                    {i + 1}
+                  </span>
+                </Reveal>
 
-                <div className="mb-4 inline-flex rounded-xl border border-[#c5dbe8] bg-white p-2.5 transition-colors duration-300 group-hover:border-accent/40 group-hover:bg-accent/10">
-                  <Icon className="size-6 text-accent transition-all duration-300 group-hover:scale-110" />
-                </div>
+                <Reveal delay={i * 80 + 40} className="pt-2 lg:mt-6 lg:pt-0">
+                  <h3 className="flex flex-wrap items-center gap-2 heading-6 text-text">
+                    {title}
+                    {free && (
+                      <span className="rounded-md border border-border bg-surface px-2 py-0.5 caption-3 text-text">
+                        Sin costo
+                      </span>
+                    )}
+                  </h3>
+                  <p className="mt-2 max-w-xs body-6 text-muted">{text}</p>
+                </Reveal>
+              </li>
+            );
+          })}
+        </ol>
 
-                <h3 className="mb-2 font-semibold text-bg">{title}</h3>
-
-                <p className="text-sm leading-relaxed text-[#4a6a80]">
-                  {description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <Reveal className="mt-16 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+          <Button href={siteMetadata.whatsappUrl}>
+            <WhatsappLogoIcon size={20} weight="bold" aria-hidden="true" />
+            Agenda tu diagnóstico
+          </Button>
+          <p className="body-6 text-muted">
+            Trabajamos de forma remota con empresas de todo México.
+          </p>
+        </Reveal>
       </div>
     </section>
   );
