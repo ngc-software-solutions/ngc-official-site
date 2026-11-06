@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tailwind-animations";
 
 /* Dark mode follows the `.dark` class on <html> (set by the theme script). */
 @custom-variant dark (&:where(.dark, .dark *));
