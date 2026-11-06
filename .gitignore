@@ -43,5 +43,8 @@ next-env.d.ts
 # AI Agents config
 AGENTS.md
 CLAUDE.md
+.claude/
+.agents/
+skills-lock.json
 
 .vscode
