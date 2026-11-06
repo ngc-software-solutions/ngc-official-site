@@ -2,6 +2,7 @@ import Hero from "@/components/sections/Hero";
 import FeaturedCase from "@/components/sections/FeaturedCase";
 import ProblemSolution from "@/components/sections/ProblemSolution";
 import Services from "@/components/sections/Services";
+import Tagline from "@/components/sections/Tagline";
 import Portfolio from "@/components/sections/Portfolio";
 import Team from "@/components/sections/Team";
 import Contact from "@/components/sections/Contact";
@@ -15,6 +16,7 @@ export default function Home() {
       <FeaturedCase />
       <ProblemSolution />
       <Services />
+      <Tagline />
       <Workflow />
       <Portfolio />
       <Team />

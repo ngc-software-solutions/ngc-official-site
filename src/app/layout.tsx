@@ -68,7 +68,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <noscript>
-          <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
+          <style>{`.reveal{opacity:1!important;transform:none!important}.tagline-word{color:var(--text)!important}`}</style>
         </noscript>
       </head>
       <body className="relative">

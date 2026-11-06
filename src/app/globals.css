@@ -239,6 +239,15 @@
   }
 }
 
+/* Tagline reveal (sections/Tagline.tsx): muted words light up in order. */
+.tagline-word {
+  color: color-mix(in srgb, var(--text) 30%, transparent);
+  transition: color 300ms var(--ease-base);
+}
+.tagline-word[data-active="true"] {
+  color: var(--text);
+}
+
 /* ───────────────────────── Base ───────────────────────── */
 html {
   scroll-behavior: smooth;
