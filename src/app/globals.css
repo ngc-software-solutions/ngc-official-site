@@ -58,6 +58,20 @@
 
 /* ───────────────────────── Text styles ─────────────────────────
    Named styles from the design system. Every text element uses one. */
+/* Display styles: hero only, above Heading 1 (user asked for a bigger,
+   bolder headline). Built from scale steps, bold is the max weight. */
+@utility display-1 {
+  font-size: var(--text-8xl);
+  line-height: var(--text-8xl--line-height);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+@utility display-2 {
+  font-size: var(--text-7xl);
+  line-height: var(--text-7xl--line-height);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
 @utility heading-1 {
   font-size: var(--text-6xl);
   line-height: var(--text-6xl--line-height);
@@ -245,6 +259,43 @@
 }
 .tagline-word[data-active="true"] {
   color: var(--text);
+}
+
+/* Hero illustration (components/ui/SystemIllustration.tsx): sources flow
+   into one system window. Theme tokens only, so it follows light/dark. */
+.ill-chip { fill: var(--surface); stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 4; }
+.ill-glyph rect, .ill-glyph path, .ill-glyph line { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+.ill-muted { fill: var(--muted); }
+.ill-text { fill: var(--text); }
+.ill-on-accent { fill: var(--on-accent); }
+.ill-window { fill: var(--surface); stroke: var(--border); stroke-width: 1; }
+.ill-divider { stroke: var(--border); stroke-width: 1; }
+.ill-accent { fill: var(--accent); }
+.ill-blue { fill: #269dc2; }
+.ill-ok { fill: #10b981; }
+.ill-tile { fill: var(--surface-alt); }
+.ill-line { fill: color-mix(in srgb, var(--muted) 45%, transparent); }
+.ill-strong { fill: color-mix(in srgb, var(--text) 80%, transparent); }
+.ill-ghost { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 4; }
+.ill-node { fill: #269dc2; }
+.ill-flow {
+  fill: none;
+  stroke: #269dc2;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 4 8;
+  animation: ill-flow 1.6s linear infinite;
+}
+.ill-bar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: ill-grow 700ms var(--ease-base) both;
+}
+@keyframes ill-flow {
+  to { stroke-dashoffset: -24; }
+}
+@keyframes ill-grow {
+  from { transform: scaleY(0); }
 }
 
 /* ───────────────────────── Base ───────────────────────── */
