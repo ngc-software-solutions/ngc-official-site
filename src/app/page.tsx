@@ -3,6 +3,7 @@ import FeaturedCase from "@/components/sections/FeaturedCase";
 import ProblemSolution from "@/components/sections/ProblemSolution";
 import Services from "@/components/sections/Services";
 import Tagline from "@/components/sections/Tagline";
+import Models from "@/components/sections/Models";
 import Portfolio from "@/components/sections/Portfolio";
 import Team from "@/components/sections/Team";
 import Contact from "@/components/sections/Contact";
@@ -17,6 +18,7 @@ export default function Home() {
       <ProblemSolution />
       <Services />
       <Tagline />
+      <Models />
       <Workflow />
       <Portfolio />
       <Team />
