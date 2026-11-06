@@ -17,10 +17,13 @@ const navItems = [
   { id: "contacto", label: "Contacto" },
 ];
 
-const ids = navItems.map((item) => item.id);
-
-/** Tracks which section sits under the middle band of the viewport. */
-function useActiveSection(sectionIds: string[]) {
+/**
+ * Tracks which section sits under the middle band of the viewport.
+ * Watches every section with an id (not only the ones in the menu), so
+ * sections like the hero or the team clear the highlight instead of
+ * leaving the previous menu item marked.
+ */
+function useActiveSection() {
   const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
@@ -32,12 +35,11 @@ function useActiveSection(sectionIds: string[]) {
       },
       { rootMargin: "-45% 0px -50% 0px" },
     );
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+    document
+      .querySelectorAll("section[id]")
+      .forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [sectionIds]);
+  }, []);
 
   return active;
 }
@@ -59,7 +61,7 @@ function MenuIcon({ open }: { open: boolean }) {
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const active = useActiveSection(ids);
+  const active = useActiveSection();
 
   useEffect(() => {
     if (!menuOpen) return;
