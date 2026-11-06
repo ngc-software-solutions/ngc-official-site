@@ -221,6 +221,24 @@
   animation: rise 700ms var(--ease-base) both;
 }
 
+/* Scroll reveal (components/ui/Reveal.tsx): rise 32px + fade, 700ms. */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 700ms var(--ease-base),
+    transform 700ms var(--ease-base);
+}
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transform: none;
+  }
+}
+
 /* ───────────────────────── Base ───────────────────────── */
 html {
   scroll-behavior: smooth;
