@@ -58,6 +58,20 @@
 
 /* ───────────────────────── Text styles ─────────────────────────
    Named styles from the design system. Every text element uses one. */
+/* Display styles: hero only, above Heading 1 (user asked for a bigger,
+   bolder headline). Built from scale steps, bold is the max weight. */
+@utility display-1 {
+  font-size: var(--text-8xl);
+  line-height: var(--text-8xl--line-height);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+@utility display-2 {
+  font-size: var(--text-7xl);
+  line-height: var(--text-7xl--line-height);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
 @utility heading-1 {
   font-size: var(--text-6xl);
   line-height: var(--text-6xl--line-height);
@@ -246,6 +260,24 @@
 .tagline-word[data-active="true"] {
   color: var(--text);
 }
+
+/* Hero illustration (components/ui/SystemIllustration.tsx). Faces are
+   shaded by mixing the theme text color into the surface, so it follows
+   light and dark automatically. */
+.iso-neutral-top { fill: var(--surface); stroke: var(--border); stroke-width: 1; stroke-linejoin: round; }
+.iso-neutral-left { fill: color-mix(in srgb, var(--surface) 91%, var(--text)); stroke: var(--border); stroke-width: 1; stroke-linejoin: round; }
+.iso-neutral-right { fill: color-mix(in srgb, var(--surface) 82%, var(--text)); stroke: var(--border); stroke-width: 1; stroke-linejoin: round; }
+.iso-accent-top { fill: color-mix(in srgb, var(--accent) 88%, var(--surface)); }
+.iso-accent-left { fill: var(--accent); }
+.iso-accent-right { fill: color-mix(in srgb, var(--accent) 75%, #000000); }
+.iso-blue-top { fill: #269dc2; }
+.iso-blue-left { fill: color-mix(in srgb, #269dc2 82%, #000000); }
+.iso-blue-right { fill: color-mix(in srgb, #269dc2 66%, #000000); }
+.iso-label { fill: var(--text); }
+.iso-label-on-accent { fill: var(--on-accent); }
+.iso-caption { fill: var(--muted); }
+.iso-link { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; fill: none; }
+.iso-ghost polygon { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; stroke-linejoin: round; }
 
 /* ───────────────────────── Base ───────────────────────── */
 html {
