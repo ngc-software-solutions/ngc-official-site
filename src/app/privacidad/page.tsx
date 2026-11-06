@@ -4,11 +4,10 @@ import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { siteMetadata } from "@/lib/data/metadata";
 
 /*
- * FILL BEFORE PUBLISHING: the law requires the legal identity and full
- * address of whoever is responsible for the data. Replace both values.
+ * Person responsible for the data. No fiscal address yet: when NGC has one,
+ * add it to section 1 (the law asks for the responsible party's address).
  */
-const RESPONSABLE = "{{Nombre legal del responsable}}";
-const DOMICILIO = "{{Calle, número, colonia, código postal}}, Cuernavaca, Morelos, México";
+const RESPONSABLE = "Alexis Leonardo Noriega Rangel";
 const LAST_UPDATED = "6 de noviembre de 2026";
 
 export const metadata: Metadata = {
@@ -71,8 +70,8 @@ export default function PrivacyPage() {
           <Section id="responsable" title="1. Responsable de tus datos">
             <p>
               <strong>{RESPONSABLE}</strong>, que opera bajo el nombre comercial{" "}
-              <strong>{name}</strong>, con domicilio en {DOMICILIO}, es
-              responsable del tratamiento de tus datos personales.
+              <strong>{name}</strong>, es responsable del tratamiento de tus
+              datos personales.
             </p>
             <p>
               Para cualquier asunto relacionado con este aviso puedes
