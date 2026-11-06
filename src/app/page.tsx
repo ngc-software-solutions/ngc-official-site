@@ -12,7 +12,7 @@ import Workflow from "@/components/sections/Workflow";
 
 export default function Home() {
   return (
-    <main>
+    <main id="contenido">
       <Hero />
       <FeaturedCase />
       <ProblemSolution />

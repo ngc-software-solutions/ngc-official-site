@@ -46,7 +46,7 @@ export default function OGImage() {
             lineHeight: 1.2,
           }}
         >
-          Desarrollo de software a medida
+          Software a medida para empresas mexicanas
         </p>
 
         <p

@@ -26,6 +26,8 @@ export const metadata: Metadata = {
     "software a medida",
     "sistemas de gestión",
     "digitalización de empresas",
+    "expediente clínico electrónico",
+    "renta de software",
     "Cuernavaca",
     "Morelos",
     "México",
@@ -34,8 +36,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: siteMetadata.name }],
   creator: siteMetadata.name,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
+    siteName: siteMetadata.name,
     locale: "es_MX",
     url: siteMetadata.url,
     title: siteMetadata.seoTitle,
@@ -65,7 +69,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={manrope.variable} suppressHydrationWarning>
+    <html
+      lang="es"
+      className={manrope.variable}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <noscript>
@@ -73,6 +82,12 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="relative">
+        <a
+          href="#contenido"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-xl focus:bg-accent focus:px-3 focus:py-2 focus:button-sm focus:text-on-accent"
+        >
+          Saltar al contenido
+        </a>
         <Navbar />
         {children}
         <Footer />
