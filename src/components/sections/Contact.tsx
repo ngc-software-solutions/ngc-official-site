@@ -224,7 +224,7 @@ export default function Contact() {
             </div>
 
             {/* Honeypot: hidden from people, bots fill it in. */}
-            <div aria-hidden="true" className="absolute -left-[9999px] size-px overflow-hidden">
+            <div aria-hidden="true" className="absolute -left-2499.75 size-px overflow-hidden">
               <label htmlFor="website">No llenar este campo</label>
               <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
             </div>
