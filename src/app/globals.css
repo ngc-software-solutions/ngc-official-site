@@ -48,6 +48,9 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-on-accent: var(--on-accent);
+  /* Icons and graphic details only, never text: logo blue in both themes.
+     Needs a surface behind it (3.14:1 on #FFFFFF, 5.65:1 on #181818). */
+  --color-accent-icon: #269dc2;
 
   --font-sans: var(--font-manrope), system-ui, sans-serif;
 
@@ -200,6 +203,22 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* Entrance: rise 32px and fade in on the base curve. Stagger with
+   animation-delay. Reduced motion collapses it to an instant fade. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@utility animate-rise {
+  animation: rise 700ms var(--ease-base) both;
 }
 
 /* ───────────────────────── Base ───────────────────────── */
