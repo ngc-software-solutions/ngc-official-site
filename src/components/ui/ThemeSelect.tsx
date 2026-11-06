@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { Check, Desktop, Moon, Sun } from "@phosphor-icons/react";
+import { CheckIcon, DesktopIcon, MoonIcon, SunIcon } from "@phosphor-icons/react";
 import {
   applyTheme,
   THEME_STORAGE_KEY,
@@ -11,11 +11,11 @@ import {
 const options: {
   value: ThemePreference;
   label: string;
-  Icon: typeof Sun;
+  Icon: typeof SunIcon;
 }[] = [
-  { value: "light", label: "Claro", Icon: Sun },
-  { value: "dark", label: "Oscuro", Icon: Moon },
-  { value: "system", label: "Sistema", Icon: Desktop },
+  { value: "light", label: "Claro", Icon: SunIcon },
+  { value: "dark", label: "Oscuro", Icon: MoonIcon },
+  { value: "system", label: "Sistema", Icon: DesktopIcon },
 ];
 
 // Stored preference as an external store, so every instance stays in sync
@@ -114,7 +114,7 @@ export default function ThemeSelect() {
             >
               <Icon size={16} />
               <span className="flex-1 text-left">{label}</span>
-              {active && <Check size={16} />}
+              {active && <CheckIcon size={16} />}
             </button>
           );
         })}

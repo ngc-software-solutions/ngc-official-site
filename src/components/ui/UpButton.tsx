@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowUp } from "@phosphor-icons/react";
+import { ArrowUpIcon } from "@phosphor-icons/react";
 
 /** Appears once the hero has left the viewport. */
 export default function UpButton() {
@@ -28,7 +28,7 @@ export default function UpButton() {
           : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >
-      <ArrowUp size={20} aria-hidden="true" />
+      <ArrowUpIcon size={20} aria-hidden="true" />
     </a>
   );
 }

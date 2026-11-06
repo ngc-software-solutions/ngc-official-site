@@ -1,4 +1,4 @@
-import { WhatsappLogo } from "@phosphor-icons/react/ssr";
+import { WhatsappLogoIcon } from "@phosphor-icons/react/ssr";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import { siteMetadata } from "@/lib/data/metadata";
@@ -100,7 +100,7 @@ export default function Workflow() {
 
         <Reveal className="mt-16 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
           <Button href={siteMetadata.whatsappUrl}>
-            <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
+            <WhatsappLogoIcon size={20} weight="bold" aria-hidden="true" />
             Agenda tu diagnóstico
           </Button>
           <p className="body-6 text-muted">

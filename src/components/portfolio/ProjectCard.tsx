@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { ArrowUpRight, Play } from "@phosphor-icons/react";
+import { ArrowUpRightIcon, PlayIcon } from "@phosphor-icons/react";
 import type { Project } from "@components/portfolio/types";
 import { embedUrl } from "@components/portfolio/data";
 import VideoModal from "@components/portfolio/VideoModal";
@@ -44,7 +44,7 @@ export default function ProjectCard({
           />
           <span className="absolute inset-0 flex items-center justify-center">
             <span className="inline-flex items-center gap-2 rounded-xl bg-accent px-3 py-2 button-sm text-on-accent shadow-lg shadow-black/20 transition duration-300 ease-base group-hover:opacity-90 group-active:scale-[0.98]">
-              <Play size={16} weight="fill" aria-hidden="true" />
+              <PlayIcon size={16} weight="fill" aria-hidden="true" />
               Ver demo
             </span>
           </span>
@@ -89,7 +89,7 @@ export default function ProjectCard({
               className="ml-auto inline-flex items-center gap-1 body-5 text-text underline decoration-border underline-offset-4 transition-colors duration-300 ease-base hover:decoration-text"
             >
               Visitar sitio
-              <ArrowUpRight size={14} aria-hidden="true" />
+              <ArrowUpRightIcon size={14} aria-hidden="true" />
             </a>
           )}
         </div>

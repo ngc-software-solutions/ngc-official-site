@@ -1,27 +1,27 @@
 import {
-  ArrowUpRight,
-  Certificate,
-  Quotes,
-  Stethoscope,
-  UsersThree,
+  ArrowUpRightIcon,
+  CertificateIcon,
+  QuotesIcon,
+  StethoscopeIcon,
+  UsersThreeIcon,
 } from "@phosphor-icons/react/ssr";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 
 const points = [
   {
-    Icon: UsersThree,
+    Icon: UsersThreeIcon,
     title: "Más de 500 pacientes registrados",
     detail: "con su historial completo en un solo lugar.",
   },
   {
-    Icon: Certificate,
+    Icon: CertificateIcon,
     title: "Diseñado conforme a la NOM 004",
     detail:
       "cinco documentos clínicos con firma digital que los protege al completarse.",
   },
   {
-    Icon: Stethoscope,
+    Icon: StethoscopeIcon,
     title: "Todo el equipo en el mismo expediente",
     detail: "médicos, enfermería y administración, cada quien con sus permisos.",
   },
@@ -77,7 +77,7 @@ export default function FeaturedCase() {
             className="mt-10"
           >
             Conoce MedOnline
-            <ArrowUpRight size={16} aria-hidden="true" />
+            <ArrowUpRightIcon size={16} aria-hidden="true" />
           </Button>
         </Reveal>
 
@@ -92,7 +92,7 @@ export default function FeaturedCase() {
                 loading="lazy"
                 className="h-12 w-auto dark:brightness-0 dark:invert"
               />
-              <Quotes
+              <QuotesIcon
                 size={32}
                 weight="fill"
                 className="shrink-0 text-accent-icon"

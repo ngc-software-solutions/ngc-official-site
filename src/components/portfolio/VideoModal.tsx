@@ -3,7 +3,7 @@
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "@phosphor-icons/react";
+import { XIcon } from "@phosphor-icons/react";
 
 interface VideoModalProps {
   videoUrl: string;
@@ -79,7 +79,7 @@ export default function VideoModal({
                 onClick={onClose}
                 className="flex shrink-0 items-center gap-2 rounded-lg px-3 py-2 button-sm text-white/70 transition-colors duration-300 ease-base hover:bg-white/10 hover:text-white focus-visible:outline-white"
               >
-                <X size={16} aria-hidden="true" />
+                <XIcon size={16} aria-hidden="true" />
                 Cerrar
               </button>
             </div>

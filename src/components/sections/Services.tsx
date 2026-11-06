@@ -1,40 +1,40 @@
 import {
-  Browser,
-  Files,
-  Lifebuoy,
-  PlugsConnected,
-  Stack,
+  BrowserIcon,
+  FilesIcon,
+  LifebuoyIcon,
+  PlugsConnectedIcon,
+  StackIcon,
 } from "@phosphor-icons/react/ssr";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 
 const services = [
   {
-    Icon: Stack,
+    Icon: StackIcon,
     name: "Sistemas a medida",
     description:
       "Expedientes, compras, inventario o lo que tu operación necesite, con los pasos y permisos que ya usa tu equipo.",
   },
   {
-    Icon: Files,
+    Icon: FilesIcon,
     name: "Digitalización de procesos",
     description:
       "Pasamos a pantalla los formatos en papel y las solicitudes por correo, con registro de quién hizo qué y cuándo.",
   },
   {
-    Icon: PlugsConnected,
+    Icon: PlugsConnectedIcon,
     name: "Integraciones",
     description:
       "Conectamos tu sistema con facturación, bancos u otras herramientas para no capturar dos veces el mismo dato.",
   },
   {
-    Icon: Browser,
+    Icon: BrowserIcon,
     name: "Sitios y landing pages",
     description:
       "Páginas rápidas que explican tu servicio y llevan a tus clientes a escribirte.",
   },
   {
-    Icon: Lifebuoy,
+    Icon: LifebuoyIcon,
     name: "Soporte y mejora continua",
     description:
       "Monitoreo, correcciones y nuevas funciones después de la entrega.",

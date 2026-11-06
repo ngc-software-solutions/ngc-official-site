@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { WhatsappLogo } from "@phosphor-icons/react";
+import { WhatsappLogoIcon } from "@phosphor-icons/react";
 import Logo from "@/components/ui/Logo";
 import ThemeSelect from "@/components/ui/ThemeSelect";
 import Button from "@/components/ui/Button";
@@ -118,7 +118,7 @@ export default function Navbar() {
             size="sm"
             className="max-lg:hidden"
           >
-            <WhatsappLogo size={16} weight="bold" aria-hidden="true" />
+            <WhatsappLogoIcon size={16} weight="bold" aria-hidden="true" />
             WhatsApp
           </Button>
           <button
@@ -166,7 +166,7 @@ export default function Navbar() {
                 </a>
               ) : (
                 <Button href={siteMetadata.whatsappUrl} onClick={close}>
-                  <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
+                  <WhatsappLogoIcon size={20} weight="bold" aria-hidden="true" />
                   Escríbenos por WhatsApp
                 </Button>
               )}

@@ -1,32 +1,32 @@
 import {
-  Code,
-  GithubLogo,
-  Globe,
-  Handshake,
-  LinkedinLogo,
-  Pulse,
-  Scales,
+  CodeIcon,
+  GithubLogoIcon,
+  GlobeIcon,
+  HandshakeIcon,
+  LinkedinLogoIcon,
+  PulseIcon,
+  ScalesIcon,
 } from "@phosphor-icons/react/ssr";
 import Reveal from "@/components/ui/Reveal";
 
 const reasons = [
   {
-    Icon: Code,
+    Icon: CodeIcon,
     title: "Hablas con quien programa",
     text: "Tres fundadores, sin intermediarios ni vendedores de por medio.",
   },
   {
-    Icon: Pulse,
+    Icon: PulseIcon,
     title: "Sistemas en producción, no prototipos",
     text: "Hoy tenemos 9 sistemas funcionando con usuarios reales.",
   },
   {
-    Icon: Scales,
+    Icon: ScalesIcon,
     title: "Conocemos la normativa de tu sector",
     text: "El Código de Red en energía y la NOM 004 en salud.",
   },
   {
-    Icon: Handshake,
+    Icon: HandshakeIcon,
     title: "No desaparecemos al entregar",
     text: "Te acompañamos con mantenimiento, mejoras y soporte.",
   },
@@ -139,7 +139,7 @@ export default function Team() {
                       aria-label={`GitHub de ${member.name}`}
                       className={linkClass}
                     >
-                      <GithubLogo size={20} aria-hidden="true" />
+                      <GithubLogoIcon size={20} aria-hidden="true" />
                     </a>
                     <a
                       href={member.linkedin}
@@ -148,7 +148,7 @@ export default function Team() {
                       aria-label={`LinkedIn de ${member.name}`}
                       className={linkClass}
                     >
-                      <LinkedinLogo size={20} aria-hidden="true" />
+                      <LinkedinLogoIcon size={20} aria-hidden="true" />
                     </a>
                     <a
                       href={member.portfolio}
@@ -157,7 +157,7 @@ export default function Team() {
                       aria-label={`Portafolio de ${member.name}`}
                       className={linkClass}
                     >
-                      <Globe size={20} aria-hidden="true" />
+                      <GlobeIcon size={20} aria-hidden="true" />
                     </a>
                   </div>
                 </article>

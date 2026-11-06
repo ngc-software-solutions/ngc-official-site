@@ -1,11 +1,11 @@
 import {
-  FirstAidKit,
-  Globe,
-  Lightning,
-  SealCheck,
-  ShoppingCart,
-  SquaresFour,
-  WhatsappLogo,
+  FirstAidKitIcon,
+  GlobeIcon,
+  LightningIcon,
+  SealCheckIcon,
+  ShoppingCartIcon,
+  SquaresFourIcon,
+  WhatsappLogoIcon,
 } from "@phosphor-icons/react/ssr";
 import Button from "@/components/ui/Button";
 import { siteMetadata } from "@/lib/data/metadata";
@@ -18,11 +18,11 @@ const proof = [
 
 // Real systems from the portfolio (src/components/portfolio/data.ts).
 const systems = [
-  { Icon: FirstAidKit, name: "Expediente clínico electrónico", sector: "Salud" },
-  { Icon: Lightning, name: "Monitoreo eléctrico en tiempo real", sector: "Energía" },
-  { Icon: ShoppingCart, name: "Gestión de compras y requisiciones", sector: "Energía" },
-  { Icon: SquaresFour, name: "Panel de administración interna", sector: "Energía" },
-  { Icon: Globe, name: "Sitio de prospección comercial", sector: "Agroindustria" },
+  { Icon: FirstAidKitIcon, name: "Expediente clínico electrónico", sector: "Salud" },
+  { Icon: LightningIcon, name: "Monitoreo eléctrico en tiempo real", sector: "Energía" },
+  { Icon: ShoppingCartIcon, name: "Gestión de compras y requisiciones", sector: "Energía" },
+  { Icon: SquaresFourIcon, name: "Panel de administración interna", sector: "Energía" },
+  { Icon: GlobeIcon, name: "Sitio de prospección comercial", sector: "Agroindustria" },
 ];
 
 const delay = (ms: number) => ({ animationDelay: `${ms}ms` });
@@ -64,7 +64,7 @@ export default function Hero() {
             style={delay(240)}
           >
             <Button href={siteMetadata.whatsappUrl}>
-              <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
+              <WhatsappLogoIcon size={20} weight="bold" aria-hidden="true" />
               Escríbenos por WhatsApp
             </Button>
             <a
@@ -122,7 +122,7 @@ export default function Hero() {
 
           {/* Overlapping chip: risk reversal sits right beside the offer. */}
           <div className="absolute -bottom-6 left-6 flex items-center gap-3 rounded-xl border border-border bg-surface px-4 py-3 shadow-lg shadow-black/5 dark:shadow-none">
-            <SealCheck size={20} className="text-accent-icon" aria-hidden="true" />
+            <SealCheckIcon size={20} className="text-accent-icon" aria-hidden="true" />
             <p className="title-4 text-text">Primer diagnóstico sin costo</p>
           </div>
 

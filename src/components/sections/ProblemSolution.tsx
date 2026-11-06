@@ -1,40 +1,40 @@
 import {
-  ChartLineUp,
-  ChatsCircle,
-  ClockCounterClockwise,
-  Database,
-  FileXls,
-  Note,
-  Question,
-  UserCircleCheck,
+  ChartLineUpIcon,
+  ChatsCircleIcon,
+  ClockCounterClockwiseIcon,
+  DatabaseIcon,
+  FileXlsIcon,
+  NoteIcon,
+  QuestionIcon,
+  UserCircleCheckIcon,
 } from "@phosphor-icons/react/ssr";
 import Reveal from "@/components/ui/Reveal";
 
 const today = [
-  { Icon: ChatsCircle, text: "Solicitudes repartidas en chats y correos" },
-  { Icon: FileXls, text: "Hojas de cálculo con versiones distintas" },
-  { Icon: Note, text: "Formatos en papel que alguien recaptura después" },
-  { Icon: Question, text: "Nadie sabe en qué va cada solicitud" },
+  { Icon: ChatsCircleIcon, text: "Solicitudes repartidas en chats y correos" },
+  { Icon: FileXlsIcon, text: "Hojas de cálculo con versiones distintas" },
+  { Icon: NoteIcon, text: "Formatos en papel que alguien recaptura después" },
+  { Icon: QuestionIcon, text: "Nadie sabe en qué va cada solicitud" },
 ];
 
 const withSystem = [
   {
-    Icon: UserCircleCheck,
+    Icon: UserCircleCheckIcon,
     title: "Responsable y estado en cada solicitud",
     text: "tu equipo ve quién la tiene y qué falta.",
   },
   {
-    Icon: Database,
+    Icon: DatabaseIcon,
     title: "Una sola fuente de datos",
     text: "todos trabajan sobre la misma información.",
   },
   {
-    Icon: ClockCounterClockwise,
+    Icon: ClockCounterClockwiseIcon,
     title: "Historial de cambios",
     text: "queda registro de quién hizo qué y cuándo.",
   },
   {
-    Icon: ChartLineUp,
+    Icon: ChartLineUpIcon,
     title: "Reportes en tiempo real",
     text: "sin esperar a que alguien junte los datos.",
   },

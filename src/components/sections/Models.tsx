@@ -1,8 +1,8 @@
 import {
-  CalendarCheck,
-  Check,
-  Key,
-  LockKey,
+  CalendarCheckIcon,
+  CheckIcon,
+  KeyIcon,
+  LockKeyIcon,
 } from "@phosphor-icons/react/ssr";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
@@ -10,7 +10,7 @@ import Reveal from "@/components/ui/Reveal";
 // High level on purpose: terms are agreed with each client.
 const models = [
   {
-    Icon: CalendarCheck,
+    Icon: CalendarCheckIcon,
     name: "Renta mensual",
     summary: "Pagas una mensualidad y nosotros nos encargamos de que funcione.",
     points: [
@@ -20,7 +20,7 @@ const models = [
     ],
   },
   {
-    Icon: Key,
+    Icon: KeyIcon,
     name: "Licencia permanente",
     summary: "Un solo pago por el derecho de uso de tu sistema, sin vencimiento.",
     points: [
@@ -68,7 +68,7 @@ export default function Models() {
                 <ul className="mt-8 flex flex-col gap-3 border-t border-border pt-8">
                   {points.map((point) => (
                     <li key={point} className="flex items-start gap-3">
-                      <Check
+                      <CheckIcon
                         size={20}
                         weight="bold"
                         className="shrink-0 text-accent-icon"
@@ -86,7 +86,7 @@ export default function Models() {
         <Reveal className="mt-8">
           <div className="flex flex-col gap-6 rounded-2xl bg-surface-alt p-6 md:flex-row md:items-center md:justify-between md:p-8">
             <p className="flex max-w-2xl items-start gap-3 body-6 text-muted">
-              <LockKey
+              <LockKeyIcon
                 size={20}
                 className="mt-0.5 shrink-0 text-text"
                 aria-hidden="true"

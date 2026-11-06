@@ -1,4 +1,4 @@
-import { WhatsappLogo } from "@phosphor-icons/react/ssr";
+import { WhatsappLogoIcon } from "@phosphor-icons/react/ssr";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import { siteMetadata } from "@/lib/data/metadata";
@@ -87,7 +87,7 @@ export default function Faq() {
           </Reveal>
           <Reveal delay={120} className="shrink-0">
             <Button href={siteMetadata.whatsappUrl} variant="secondary">
-              <WhatsappLogo size={20} aria-hidden="true" />
+              <WhatsappLogoIcon size={20} aria-hidden="true" />
               ¿Otra duda? Escríbenos
             </Button>
           </Reveal>
