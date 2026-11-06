@@ -1,24 +1,13 @@
-export type Status = "En Producción" | "En Desarrollo";
+export type Status = "En producción" | "En desarrollo";
 
-export interface SystemProject {
+export interface Project {
   title: string;
+  sector: string;
   description: string;
   status: Status;
   stack: string[];
-  videoUrl?: string;
-}
-
-export interface WebPage {
-  title: string;
-  description: string;
-  status: Status;
-  videoUrl?: string;
-}
-
-export interface PortfolioBlock {
-  badge: string;
-  title: string;
-  description: string;
-  systems: SystemProject[];
-  pages: WebPage[];
+  /** YouTube video id for the demo. */
+  videoId?: string;
+  /** Public site of the product, when it has one. */
+  href?: string;
 }

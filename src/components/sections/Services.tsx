@@ -1,50 +1,43 @@
 import {
-  CodeBracketIcon,
-  ArrowPathIcon,
-  WindowIcon,
-  ArrowsRightLeftIcon,
-  WrenchScrewdriverIcon,
-  ArrowLongRightIcon,
-  LightBulbIcon,
-} from "@heroicons/react/24/outline";
+  BrowserIcon,
+  FilesIcon,
+  LifebuoyIcon,
+  PlugsConnectedIcon,
+  StackIcon,
+} from "@phosphor-icons/react/ssr";
 import Button from "@/components/ui/Button";
+import Reveal from "@/components/ui/Reveal";
 
 const services = [
   {
-    icon: CodeBracketIcon,
-    name: "Sistemas a Medida",
+    Icon: StackIcon,
+    name: "Sistemas a medida",
     description:
-      "Construimos software diseñado exactamente para tu operación, sin soluciones genéricas que no encajan.",
+      "Expedientes, compras, inventario o lo que tu operación necesite, con los pasos y permisos que ya usa tu equipo.",
   },
   {
-    icon: ArrowPathIcon,
-    name: "Digitalización de Procesos",
+    Icon: FilesIcon,
+    name: "Digitalización de procesos",
     description:
-      "Transformamos flujos manuales en procesos digitales eficientes que ahorran tiempo y reducen errores.",
+      "Pasamos a pantalla los formatos en papel y las solicitudes por correo, con registro de quién hizo qué y cuándo.",
   },
   {
-    icon: WindowIcon,
-    name: "Plataformas Web y Landing Pages",
+    Icon: PlugsConnectedIcon,
+    name: "Integraciones",
     description:
-      "Presencia digital que convierte visitas en clientes, con diseño profesional y carga rápida.",
+      "Conectamos tu sistema con facturación, bancos u otras herramientas para no capturar dos veces el mismo dato.",
   },
   {
-    icon: ArrowsRightLeftIcon,
-    name: "APIs e Integraciones",
+    Icon: BrowserIcon,
+    name: "Sitios y landing pages",
     description:
-      "Conectamos tus herramientas y sistemas para que trabajen juntos sin fricciones ni datos duplicados.",
+      "Páginas rápidas que explican tu servicio y llevan a tus clientes a escribirte.",
   },
   {
-    icon: WrenchScrewdriverIcon,
-    name: "Soporte y Mantenimiento",
+    Icon: LifebuoyIcon,
+    name: "Soporte y mejora continua",
     description:
-      "Tu software siempre operando. Nos encargamos de las actualizaciones, bugs y mejoras continuas.",
-  },
-  {
-    icon: LightBulbIcon,
-    name: "Consultoría Tecnológica",
-    description:
-      "Analizamos tu operación y te decimos exactamente qué tecnología necesitas — y cuál no — antes de invertir en desarrollo.",
+      "Monitoreo, correcciones y nuevas funciones después de la entrega.",
   },
 ];
 
@@ -52,60 +45,59 @@ export default function Services() {
   return (
     <section
       id="servicios"
-      className="relative py-28 px-6 overflow-hidden timeline-view animate-blurred-fade-in animate-range-[entry_0%_contain_1%]"
+      aria-labelledby="servicios-titulo"
+      className="px-6 py-24"
     >
-      <div className="absolute inset-0 bg-linear-to-b from-bg via-surface/20 to-bg pointer-events-none" />
-
-      <div className="relative z-10 mx-auto max-w-5xl">
-        <div className="mb-16 text-center">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface/40 px-4 py-1.5 text-xs text-muted backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            Lo que hacemos
-          </div>
-
-          <h2 className="font-display mb-4 text-4xl font-bold tracking-tight text-text md:text-5xl">
-            ¿En qué podemos <span className="text-accent">ayudarte?</span>
+      <div className="mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+        {/* Header stays in view while the list scrolls past. */}
+        <Reveal className="lg:sticky lg:top-24">
+          <p className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-1 caption-4 text-muted">
+            <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
+            Servicios
+          </p>
+          <h2
+            id="servicios-titulo"
+            className="mt-6 heading-4 text-text md:heading-2"
+          >
+            Lo que construimos para tu empresa
           </h2>
-
-          <p className="mx-auto max-w-xl text-base leading-relaxed text-muted">
-            Desde la idea hasta el sistema en producción — cubrimos cada etapa
-            con soluciones que realmente funcionan para tu negocio.
+          <p className="mt-6 max-w-md body-3 text-muted">
+            Cada sistema parte de cómo trabaja tu equipo hoy. No adaptamos tu
+            operación a un software genérico.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ icon: Icon, name, description }) => (
-            <div
-              key={name}
-              className="group relative rounded-2xl border border-border bg-surface/30 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-surface/50"
-            >
-              <div className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-accent/5" />
-
-              <div className="relative">
-                <div className="mb-4 inline-flex rounded-xl border border-border bg-surface/60 p-2.5 transition-colors duration-300 group-hover:border-accent/30 group-hover:bg-accent/10">
-                  <Icon className="size-6 text-accent group-hover:text-accent group-hover:scale-110 duration-300 transition-all" />
-                </div>
-
-                <h3 className="mb-2 font-semibold text-text">{name}</h3>
-
-                <p className="text-sm leading-relaxed text-muted">
-                  {description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-16 flex flex-col items-center gap-4 text-center">
-          <p className="text-sm text-muted">
-            ¿No encuentras lo que buscas?{" "}
-            <span className="text-text/70">Hablemos.</span>
-          </p>
-          <Button href="#contacto" variant="secondary">
-            Cuéntanos tu proyecto
-            <ArrowLongRightIcon className="size-5" />
+          <Button href="#contacto" variant="link" className="mt-8">
+            Agenda tu diagnóstico sin costo
           </Button>
-        </div>
+        </Reveal>
+
+        <ol className="border-b border-border">
+          {services.map(({ Icon, name, description }, i) => (
+            <li key={name} className="border-t border-border">
+              <Reveal
+                delay={i * 60}
+                className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-6 gap-y-4 py-8 sm:grid-cols-[48px_auto_minmax(0,1fr)]"
+              >
+                <span className="pt-1 caption-3 tabular-nums text-muted max-sm:hidden">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="flex size-12 items-center justify-center rounded-xl border border-border bg-surface text-accent-icon">
+                  <Icon size={24} aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 className="heading-6 text-text">
+                    <span className="mr-2 caption-3 tabular-nums text-muted sm:hidden">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {name}
+                  </h3>
+                  <p className="mt-2 max-w-xl body-3 text-muted">
+                    {description}
+                  </p>
+                </div>
+              </Reveal>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

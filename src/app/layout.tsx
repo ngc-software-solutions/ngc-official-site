@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Syne } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { siteMetadata } from "@/lib/data/metadata";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import UpButton from "@/components/ui/UpButton";
+import Footer from "@/components/sections/Footer";
+import { themeInitScript } from "@/lib/theme";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -29,6 +26,8 @@ export const metadata: Metadata = {
     "software a medida",
     "sistemas de gestión",
     "digitalización de empresas",
+    "expediente clínico electrónico",
+    "renta de software",
     "Cuernavaca",
     "Morelos",
     "México",
@@ -37,8 +36,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: siteMetadata.name }],
   creator: siteMetadata.name,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
+    siteName: siteMetadata.name,
     locale: "es_MX",
     url: siteMetadata.url,
     title: siteMetadata.seoTitle,
@@ -68,10 +69,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={`${inter.variable} ${syne.variable}`}>
+    <html
+      lang="es"
+      className={manrope.variable}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <noscript>
+          <style>{`.reveal{opacity:1!important;transform:none!important}.tagline-word{color:var(--text)!important}`}</style>
+        </noscript>
+      </head>
       <body className="relative">
+        <a
+          href="#contenido"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-xl focus:bg-accent focus:px-3 focus:py-2 focus:button-sm focus:text-on-accent"
+        >
+          Saltar al contenido
+        </a>
         <Navbar />
         {children}
+        <Footer />
         <UpButton />
       </body>
     </html>
