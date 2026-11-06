@@ -6,6 +6,7 @@ import Tagline from "@/components/sections/Tagline";
 import Models from "@/components/sections/Models";
 import Portfolio from "@/components/sections/Portfolio";
 import Team from "@/components/sections/Team";
+import Faq from "@/components/sections/Faq";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import Workflow from "@/components/sections/Workflow";
@@ -22,6 +23,7 @@ export default function Home() {
       <Portfolio />
       <Workflow />
       <Team />
+      <Faq />
       <Contact />
       <Footer />
     </main>
