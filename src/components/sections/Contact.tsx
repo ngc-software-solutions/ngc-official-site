@@ -1,12 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import { siteMetadata } from "@/lib/data/metadata";
 
-const NGC_EMAIL = "ngcsoftwaresolutions@gmail.com";
-const NGC_WHATSAPP = "5660267647";
+type SendState =
+  | { kind: "idle" }
+  | { kind: "sending" }
+  | { kind: "sent"; nombre: string; email: string }
+  | { kind: "error" };
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -55,7 +60,7 @@ type FormValues = yup.InferType<typeof schema>;
 
 const inputBase =
   "w-full rounded-xl border bg-surface/30 px-4 py-3 text-sm text-text placeholder:text-muted/40 backdrop-blur-sm transition-colors duration-200 focus:outline-none";
-const inputNormal = `${inputBase} border-border focus:border-accent/60`;
+const inputNormal = `${inputBase} border-border focus:border-text/40`;
 const inputError = `${inputBase} border-red-500/50 focus:border-red-500/60`;
 
 export default function Contact() {
@@ -65,16 +70,25 @@ export default function Contact() {
     formState: { errors },
     reset,
   } = useForm<FormValues>({ resolver: yupResolver(schema) });
+  const [state, setState] = useState<SendState>({ kind: "idle" });
 
-  const onSubmit = (data: FormValues) => {
-    const subject = encodeURIComponent(
-      `Proyecto de ${data.empresa} — ${data.nombre}`,
-    );
-    const body = encodeURIComponent(
-      `Nombre: ${data.nombre}\nEmpresa: ${data.empresa}\nCorreo: ${data.email}\n\nMensaje:\n${data.mensaje}`,
-    );
-    window.location.href = `mailto:${NGC_EMAIL}?subject=${subject}&body=${body}`;
-    reset();
+  const onSubmit = async (data: FormValues) => {
+    setState({ kind: "sending" });
+    const website =
+      (document.getElementById("website") as HTMLInputElement | null)?.value ??
+      "";
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ ...data, website }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setState({ kind: "sent", nombre: data.nombre, email: data.email });
+      reset();
+    } catch {
+      setState({ kind: "error" });
+    }
   };
 
   return (
@@ -91,9 +105,9 @@ export default function Contact() {
             </div>
 
             <div>
-              <h2 className="font-display text-4xl font-bold tracking-tight text-text md:text-5xl leading-tight">
+              <h2 className="text-4xl font-bold tracking-tight text-text md:text-5xl leading-tight">
                 ¿Tienes un proyecto{" "}
-                <span className="text-accent">en mente?</span>
+                <span className="text-text">en mente?</span>
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted">
                 Respondemos en menos de 24 horas. Cuéntanos qué necesitas y te
@@ -106,12 +120,12 @@ export default function Contact() {
                 ¿Prefieres escribirnos directo?
               </p>
               <a
-                href={`https://wa.me/${NGC_WHATSAPP}`}
+                href={siteMetadata.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-fit items-center gap-3 rounded-xl border border-border bg-surface/30 px-5 py-3 text-sm font-medium text-text backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-surface/60 hover:text-accent"
+                className="inline-flex w-fit items-center gap-3 rounded-xl border border-border bg-surface/30 px-5 py-3 text-sm font-medium text-text backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-surface/60 hover:text-text"
               >
-                <WhatsAppIcon className="size-5 text-accent" />
+                <WhatsAppIcon className="size-5 text-text" />
                 Escríbenos por WhatsApp
                 <ArrowLongRightIcon className="size-4 text-muted" />
               </a>
@@ -121,7 +135,7 @@ export default function Contact() {
           <form
             onSubmit={handleSubmit(onSubmit)}
             noValidate
-            className="flex flex-col gap-5"
+            className="relative flex flex-col gap-5"
           >
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
@@ -139,7 +153,7 @@ export default function Contact() {
                   {...register("nombre")}
                 />
                 {errors.nombre && (
-                  <p className="mt-1.5 text-xs text-red-400">
+                  <p className="mt-1.5 text-xs text-red-700 dark:text-red-400">
                     {errors.nombre.message}
                   </p>
                 )}
@@ -160,7 +174,7 @@ export default function Contact() {
                   {...register("email")}
                 />
                 {errors.email && (
-                  <p className="mt-1.5 text-xs text-red-400">
+                  <p className="mt-1.5 text-xs text-red-700 dark:text-red-400">
                     {errors.email.message}
                   </p>
                 )}
@@ -182,7 +196,7 @@ export default function Contact() {
                 {...register("empresa")}
               />
               {errors.empresa && (
-                <p className="mt-1.5 text-xs text-red-400">
+                <p className="mt-1.5 text-xs text-red-700 dark:text-red-400">
                   {errors.empresa.message}
                 </p>
               )}
@@ -203,19 +217,45 @@ export default function Contact() {
                 {...register("mensaje")}
               />
               {errors.mensaje && (
-                <p className="mt-1.5 text-xs text-red-400">
+                <p className="mt-1.5 text-xs text-red-700 dark:text-red-400">
                   {errors.mensaje.message}
                 </p>
               )}
             </div>
 
+            {/* Honeypot: hidden from people, bots fill it in. */}
+            <div aria-hidden="true" className="absolute -left-[9999px] size-px overflow-hidden">
+              <label htmlFor="website">No llenar este campo</label>
+              <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
+
             <button
               type="submit"
-              className="inline-flex items-center cursor-pointer justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-medium text-bg transition-all duration-300 hover:bg-accent-hover active:scale-95"
+              disabled={state.kind === "sending"}
+              className="inline-flex items-center cursor-pointer justify-center gap-2 rounded-xl bg-accent px-3 py-2 button-md text-on-accent transition duration-300 ease-base hover:opacity-90 active:scale-[0.98] disabled:cursor-wait disabled:opacity-60"
             >
-              Enviar mensaje
+              {state.kind === "sending" ? "Enviando tu proyecto…" : "Enviar mi proyecto"}
               <ArrowLongRightIcon className="size-4" />
             </button>
+
+            <div aria-live="polite" className="min-h-5">
+              {state.kind === "sent" && (
+                <p className="body-6 text-text">
+                  Recibimos tu mensaje, {state.nombre}. Te escribimos a{" "}
+                  {state.email} en menos de 24 horas.
+                </p>
+              )}
+              {state.kind === "error" && (
+                <p className="body-6 text-red-700 dark:text-red-400">
+                  No pudimos enviar tu mensaje. Intenta de nuevo en unos
+                  minutos o{" "}
+                  <a href={siteMetadata.whatsappUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
+                    escríbenos por WhatsApp
+                  </a>
+                  .
+                </p>
+              )}
+            </div>
           </form>
         </div>
       </div>
