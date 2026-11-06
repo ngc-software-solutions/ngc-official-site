@@ -1,126 +1,178 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import {
-  HomeIcon,
-  WrenchScrewdriverIcon,
-  BriefcaseIcon,
-  UserGroupIcon,
-  QueueListIcon,
-  Bars3Icon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import Navlink from "@/components/ui/Navlink";
+import { useEffect, useState } from "react";
+import { WhatsappLogo } from "@phosphor-icons/react";
+import Logo from "@/components/ui/Logo";
+import ThemeSelect from "@/components/ui/ThemeSelect";
+import Button from "@/components/ui/Button";
+import { siteMetadata } from "@/lib/data/metadata";
 
 const navItems = [
-  { id: "inicio", label: "Inicio", icon: HomeIcon },
-  { id: "servicios", label: "Servicios", icon: WrenchScrewdriverIcon },
-  { id: "proceso", label: "Proceso", icon: QueueListIcon },
-  { id: "portafolio", label: "Portafolio", icon: BriefcaseIcon },
-  { id: "equipo", label: "Equipo", icon: UserGroupIcon },
+  { id: "servicios", label: "Servicios" },
+  { id: "proceso", label: "Proceso" },
+  { id: "portafolio", label: "Proyectos" },
+  { id: "equipo", label: "Equipo" },
+  { id: "contacto", label: "Contacto" },
 ];
+
+const ids = navItems.map((item) => item.id);
+
+/** Tracks which section sits under the middle band of the viewport. */
+function useActiveSection(sectionIds: string[]) {
+  const [active, setActive] = useState<string | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [sectionIds]);
+
+  return active;
+}
+
+function MenuIcon({ open }: { open: boolean }) {
+  const line =
+    "absolute left-0 h-0.5 w-5 rounded-full bg-current transition-transform duration-500 ease-base";
+  return (
+    <span aria-hidden="true" className="relative block h-3.5 w-5">
+      <span
+        className={`${line} top-0 ${open ? "translate-y-1.5 rotate-45" : ""}`}
+      />
+      <span
+        className={`${line} bottom-0 ${open ? "-translate-y-1.5 -rotate-45" : ""}`}
+      />
+    </span>
+  );
+}
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [lightSection, setLightSection] = useState(false);
-  const headerRef = useRef<HTMLElement>(null);
+  const active = useActiveSection(ids);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const lightSectionIds = ["proceso", "equipo"];
-
-    const check = () => {
-      const navBottom = headerRef.current?.getBoundingClientRect().bottom ?? 0;
-      const isLight = lightSectionIds.some((id) => {
-        const rect = document.getElementById(id)?.getBoundingClientRect();
-        return rect && navBottom >= rect.top && navBottom <= rect.bottom;
-      });
-      setLightSection(isLight);
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
     };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
-    window.addEventListener("scroll", check, { passive: true });
-    check();
-    return () => window.removeEventListener("scroll", check);
-  }, []);
+  const close = () => setMenuOpen(false);
 
   return (
-    <header
-      ref={headerRef}
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-30 w-[calc(100%-2rem)] ${scrolled ? "max-w-4xl md:top-6" : "max-w-3xl md:top-18"} transition-all duration-300`}
-    >
+    <header className="fixed inset-x-0 top-4 z-40 flex justify-center px-4">
       <nav
-        className={`animate-fade-in backdrop-blur-[5px] border px-4 py-2 rounded-full flex items-center justify-between gap-4 ${lightSection ? "bg-bg/80 border-bg/40 shadow" : "bg-white/10 border-white/20"} transition-all duration-300`}
+        aria-label="Principal"
+        className="relative z-10 flex w-full items-center gap-2 rounded-2xl border border-border bg-surface/70 py-2 pr-2 pl-3 backdrop-blur-xl md:w-auto"
       >
-        <div className="flex gap-2 items-center animate-fade-in-up">
-          <img className="h-10 w-10" src="/logos/logo_reducido.svg" alt="NGC" />
-          <span
-            className={`font-semibold hidden md:block ${lightSection ? "text-white" : "text-text/70"} transition-all duration-300`}
-          >
-            Software Solutions
-          </span>
-        </div>
+        <a
+          href="#inicio"
+          onClick={close}
+          className="mr-2 flex items-center gap-2 rounded-lg"
+        >
+          <Logo className="size-8" />
+          <span className="title-4 text-text">Software Solutions</span>
+        </a>
 
-        <div className="flex gap-3 items-center md:hidden animate-fade-in-up">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-          <span
-            className={`font-semibold transition-all duration-300 ${lightSection ? "text-white" : "text-text/70"}`}
-          >
-            Software Solutions
-          </span>
-        </div>
+        <ul className="hidden items-center md:flex">
+          {navItems.map(({ id, label }) => {
+            const current = active === id;
+            return (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  aria-current={current ? "location" : undefined}
+                  className={`block rounded-lg px-3 py-2 title-4 transition-colors duration-300 ease-base ${
+                    current
+                      ? "bg-surface-alt text-text"
+                      : "text-muted hover:text-text"
+                  }`}
+                >
+                  {label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
 
-        {/* Nav desktop */}
-        <ul className="hidden sm:flex items-center gap-1">
-          {navItems.map(({ id, label, icon: Icon }, index) => (
-            <li key={id}>
-              <Navlink
-                id={id}
-                label={label}
-                Icon={Icon}
-                index={index}
-                light={lightSection}
-              />
+        <div className="ml-auto flex items-center gap-1">
+          <ThemeSelect />
+          <Button
+            href={siteMetadata.whatsappUrl}
+            size="sm"
+            className="max-md:hidden"
+          >
+            <WhatsappLogo size={16} weight="bold" aria-hidden="true" />
+            WhatsApp
+          </Button>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            className="flex size-10 items-center justify-center rounded-full text-text transition-colors duration-300 ease-base hover:bg-surface-alt active:scale-[0.98] md:hidden"
+          >
+            <MenuIcon open={menuOpen} />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile: full height panel, links arrive in reading order. */}
+      <div
+        id="mobile-menu"
+        inert={!menuOpen}
+        className={`fixed inset-0 bg-bg/95 backdrop-blur-2xl transition-opacity duration-300 ease-base md:hidden ${
+          menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <ul className="flex flex-col gap-2 px-6 pt-32">
+          {[...navItems, null].map((item, i) => (
+            <li
+              key={item?.id ?? "cta"}
+              style={{ transitionDelay: menuOpen ? `${i * 60}ms` : "0ms" }}
+              className={`transition duration-500 ease-base ${
+                menuOpen
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-6 opacity-0"
+              } ${item ? "" : "pt-6"}`}
+            >
+              {item ? (
+                <a
+                  href={`#${item.id}`}
+                  onClick={close}
+                  aria-current={active === item.id ? "location" : undefined}
+                  className={`block py-2 heading-4 ${
+                    active === item.id ? "text-text" : "text-muted"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Button href={siteMetadata.whatsappUrl} onClick={close}>
+                  <WhatsappLogo size={20} weight="bold" aria-hidden="true" />
+                  Escríbenos por WhatsApp
+                </Button>
+              )}
             </li>
           ))}
         </ul>
-
-        <button
-          className={`sm:hidden flex items-center justify-center p-1.5 rounded-full hover:text-accent hover:bg-accent/10 border border-transparent hover:border-accent/20 transition-all duration-300 animate-slide-in-right ${lightSection ? "text-white" : "text-text/70"}`}
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Abrir menú"
-        >
-          {menuOpen ? (
-            <XMarkIcon className="size-5" />
-          ) : (
-            <Bars3Icon className="size-5" />
-          )}
-        </button>
-      </nav>
-
-      {/* Nav Mobile */}
-      {menuOpen && (
-        <div
-          className={`sm:hidden mt-2 backdrop-blur-[5px] border rounded-2xl px-3 py-2 flex flex-col gap-1 animate-fade-in-down ${lightSection ? "bg-bg/80 border-bg/40 shadow" : "bg-white/10 border-white/20"} transition-all duration-300`}
-        >
-          {navItems.map(({ id, label, icon: Icon }, index) => (
-            <Navlink
-              key={id}
-              id={id}
-              label={label}
-              Icon={Icon}
-              index={index}
-              light={lightSection}
-              onClick={() => setMenuOpen(false)}
-            />
-          ))}
-        </div>
-      )}
+      </div>
     </header>
   );
 }
