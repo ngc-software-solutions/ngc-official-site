@@ -103,7 +103,7 @@ export default function SystemsCarousel({
         <div className="mt-5 flex items-center justify-between">
           <button
             onClick={() => navigate(-1)}
-            className="flex size-9 items-center justify-center rounded-full border border-border bg-surface/40 text-muted hover:border-accent/40 hover:text-accent transition-all duration-200"
+            className="flex size-9 items-center justify-center rounded-full border border-border bg-surface/40 text-muted hover:border-accent/40 hover:text-text transition-all duration-200"
             aria-label="Sistema anterior"
           >
             <ChevronLeftIcon className="size-4" />
@@ -126,7 +126,7 @@ export default function SystemsCarousel({
 
           <button
             onClick={() => navigate(1)}
-            className="flex size-9 items-center justify-center rounded-full border border-border bg-surface/40 text-muted hover:border-accent/40 hover:text-accent transition-all duration-200"
+            className="flex size-9 items-center justify-center rounded-full border border-border bg-surface/40 text-muted hover:border-accent/40 hover:text-text transition-all duration-200"
             aria-label="Sistema siguiente"
           >
             <ChevronRightIcon className="size-4" />

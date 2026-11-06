@@ -11,10 +11,10 @@ export default function PortfolioBlock({
   return (
     <div>
       <div className="mb-12">
-        <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+        <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-medium text-text">
           {block.badge}
         </span>
-        <h3 className="font-display mb-3 text-2xl font-bold text-text md:text-3xl">
+        <h3 className="mb-3 text-2xl font-bold text-text md:text-3xl">
           {block.title}
         </h3>
         <p className="max-w-2xl text-base leading-relaxed text-muted">

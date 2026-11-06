@@ -54,8 +54,6 @@ export default function Services() {
       id="servicios"
       className="relative py-28 px-6 overflow-hidden timeline-view animate-blurred-fade-in animate-range-[entry_0%_contain_1%]"
     >
-      <div className="absolute inset-0 bg-linear-to-b from-bg via-surface/20 to-bg pointer-events-none" />
-
       <div className="relative z-10 mx-auto max-w-5xl">
         <div className="mb-16 text-center">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface/40 px-4 py-1.5 text-xs text-muted backdrop-blur-sm">
@@ -63,8 +61,8 @@ export default function Services() {
             Lo que hacemos
           </div>
 
-          <h2 className="font-display mb-4 text-4xl font-bold tracking-tight text-text md:text-5xl">
-            ¿En qué podemos <span className="text-accent">ayudarte?</span>
+          <h2 className="mb-4 text-4xl font-bold tracking-tight text-text md:text-5xl">
+            ¿En qué podemos <span className="text-text">ayudarte?</span>
           </h2>
 
           <p className="mx-auto max-w-xl text-base leading-relaxed text-muted">
@@ -83,7 +81,7 @@ export default function Services() {
 
               <div className="relative">
                 <div className="mb-4 inline-flex rounded-xl border border-border bg-surface/60 p-2.5 transition-colors duration-300 group-hover:border-accent/30 group-hover:bg-accent/10">
-                  <Icon className="size-6 text-accent group-hover:text-accent group-hover:scale-110 duration-300 transition-all" />
+                  <Icon className="size-6 text-text group-hover:text-text group-hover:scale-110 duration-300 transition-all" />
                 </div>
 
                 <h3 className="mb-2 font-semibold text-text">{name}</h3>

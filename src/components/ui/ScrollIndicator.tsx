@@ -19,7 +19,7 @@ export default function ScrollIndicator({ targetId }: ScrollIndicatorProps) {
       className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 cursor-pointer flex-col items-center gap-2 group animate-fade-in-down"
       aria-label="Scroll hacia abajo"
     >
-      <span className="text-[10px] tracking-[0.2em] uppercase text-muted group-hover:text-accent transition-colors duration-300">
+      <span className="text-[10px] tracking-[0.2em] uppercase text-muted group-hover:text-text transition-colors duration-300">
         Scroll
       </span>
       <motion.div
@@ -32,7 +32,7 @@ export default function ScrollIndicator({ targetId }: ScrollIndicatorProps) {
           } satisfies Transition
         }
       >
-        <ChevronDownIcon className="size-6 text-muted group-hover:text-accent transition-colors duration-200" />
+        <ChevronDownIcon className="size-6 text-muted group-hover:text-text transition-colors duration-200" />
       </motion.div>
     </button>
   );

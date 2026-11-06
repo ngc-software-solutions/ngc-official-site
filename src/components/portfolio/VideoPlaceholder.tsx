@@ -43,9 +43,7 @@ export default function VideoPlaceholder({ videoUrl }: VideoPlaceholderProps) {
   }
 
   return (
-    <div className="relative aspect-video w-full overflow-hidden bg-surface/60 flex items-center justify-center group/video h-full">
-      <div className="absolute inset-0 bg-linear-to-br from-accent/5 to-transparent" />
-      <div className="flex flex-col items-center gap-2 text-muted/50 group-hover/video:text-muted transition-colors duration-300">
+    <div className="relative aspect-video w-full overflow-hidden bg-surface/60 flex items-center justify-center group/video h-full">      <div className="flex flex-col items-center gap-2 text-muted/50 group-hover/video:text-muted transition-colors duration-300">
         <div className="flex size-12 items-center justify-center rounded-full border border-border bg-surface/80">
           <PlayIcon className="size-5 translate-x-0.5" />
         </div>

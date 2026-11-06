@@ -1,9 +1,9 @@
 "use client";
 
-import Aurora from "@/components/ui/reactbits/Aurora";
+import { siteMetadata } from "@/lib/data/metadata";
+import Logo from "@/components/ui/Logo";
 
 const NGC_EMAIL = "ngcsoftwaresolutions@gmail.com";
-const NGC_WHATSAPP = "5660267647";
 const NGC_GITHUB_ORG = "https://github.com/ngc-software-solutions";
 
 const scrollTo = (id: string) =>
@@ -63,20 +63,11 @@ function WhatsAppIcon({ className }: { className?: string }) {
 
 export default function Footer() {
   return (
-    <footer className="relative px-6 py-12">
-      <div className="absolute bottom-0 left-0 right-0 h-screen scale-y-[-1] pointer-events-none">
-        <Aurora
-          colorStops={["#259dc2", "#0b1e2d", "#259dc2"]}
-          blend={1}
-          amplitude={0.9}
-          speed={0.6}
-        />
-      </div>
-
+    <footer className="relative border-t border-border px-6 py-12">
       <div className="relative z-10 mx-auto max-w-5xl">
         <div className="flex flex-col items-center gap-10 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex flex-col items-center gap-2 sm:items-start">
-            <img src="/logos/logo_reducido.svg" alt="NGC" className="h-9 w-9" />
+            <Logo className="h-9 w-9" />
             <p className="text-xs text-muted text-center sm:text-left">
               Desarrollo de software a medida — Cuernavaca, México.
             </p>
@@ -121,7 +112,7 @@ export default function Footer() {
               <EnvelopeIcon className="size-4.5" />
             </a>
             <a
-              href={`https://wa.me/${NGC_WHATSAPP}`}
+              href={siteMetadata.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted/60 transition-colors duration-200 hover:text-text"

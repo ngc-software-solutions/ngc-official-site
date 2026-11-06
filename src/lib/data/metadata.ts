@@ -8,6 +8,7 @@ export const siteMetadata = {
   email: "ngcsoftwaresolutions@gmail.com",
   phone: "+52 56-6026-7647",
   location: "Cuernavaca, Morelos, México",
+  whatsappUrl: "https://wa.me/message/6G2TM7JVJ35VJ1",
   social: {
     github: "https://github.com/ngc-software-solutions",
   },

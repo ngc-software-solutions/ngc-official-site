@@ -1,19 +1,208 @@
 @import "tailwindcss";
 @import "tailwind-animations";
 
-@theme {
-  --color-bg: #0b1e2d;
-  --color-surface: #122c3e;
-  --color-border: #1a3a52;
-  --color-accent: #259dc2;
-  --color-accent-hover: #2db8e0;
-  --color-text: #e8f1f8;
-  --color-muted: #7a9bb5;
+/* Dark mode follows the `.dark` class on <html> (set by the theme script). */
+@custom-variant dark (&:where(.dark, .dark *));
 
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Syne", sans-serif;
+/* ───────────────────────── Theme tokens ─────────────────────────
+   Light is the default. Values come from the approved palette:
+   light  bg #F5F5F5 · surface #FFFFFF · alt #EBEBEB · border #E0E0E0
+   dark   bg #000000 · surface #181818 · alt #1F1F1F · border #313131
+   Single accent per theme, both from the logo:
+   light  #122B3B navy with white text (14.6:1)
+   dark   #269DC2 blue with black text (6.7:1)                         */
+:root {
+  --bg: #f5f5f5;
+  --surface: #ffffff;
+  --surface-alt: #ebebeb;
+  --border: #e0e0e0;
+  --text: #000000;
+  --muted: #666666;
+  --hero-from: #000000;
+  --hero-to: #666666;
+  --accent: #122b3b;
+  --on-accent: #ffffff;
+  color-scheme: light;
 }
 
+.dark {
+  --bg: #000000;
+  --surface: #181818;
+  --surface-alt: #1f1f1f;
+  --border: #313131;
+  --text: #ffffff;
+  --muted: #9b9b9b;
+  --hero-from: #ffffff;
+  --hero-to: #9b9b9b;
+  --accent: #269dc2;
+  --on-accent: #000000;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+
+  --ease-base: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ───────────────────────── Text styles ─────────────────────────
+   Named styles from the design system. Every text element uses one. */
+@utility heading-1 {
+  font-size: var(--text-6xl);
+  line-height: var(--text-6xl--line-height);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+@utility heading-2 {
+  font-size: var(--text-5xl);
+  line-height: var(--text-5xl--line-height);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+@utility heading-3 {
+  font-size: var(--text-4xl);
+  line-height: var(--text-4xl--line-height);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+@utility heading-4 {
+  font-size: var(--text-3xl);
+  line-height: var(--text-3xl--line-height);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+@utility heading-5 {
+  font-size: var(--text-2xl);
+  line-height: var(--text-2xl--line-height);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+@utility heading-6 {
+  font-size: var(--text-xl);
+  line-height: var(--text-xl--line-height);
+  font-weight: 600;
+}
+@utility title-1 {
+  font-size: var(--text-xl);
+  line-height: var(--text-xl--line-height);
+  font-weight: 500;
+}
+@utility title-2 {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+  font-weight: 500;
+}
+@utility title-3 {
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+  font-weight: 500;
+}
+@utility title-4 {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  font-weight: 500;
+}
+@utility title-5 {
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  font-weight: 500;
+}
+@utility body-1 {
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+  font-weight: 600;
+}
+@utility body-2 {
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+  font-weight: 500;
+}
+@utility body-3 {
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+  font-weight: 400;
+}
+@utility body-4 {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  font-weight: 600;
+}
+@utility body-5 {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  font-weight: 500;
+}
+@utility body-6 {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  font-weight: 400;
+}
+@utility button-lg {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+  font-weight: 600;
+}
+@utility button-md {
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+  font-weight: 600;
+}
+@utility button-sm {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  font-weight: 600;
+}
+@utility button-xsm {
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  font-weight: 600;
+}
+@utility caption-1 {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  font-weight: 500;
+}
+@utility caption-2 {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  font-weight: 400;
+}
+@utility caption-3 {
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+@utility caption-4 {
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+@utility caption-5 {
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  font-weight: 400;
+}
+
+/* Hero heading: the only gradient allowed, text only, left to right. */
+@utility text-hero-gradient {
+  background-image: linear-gradient(90deg, var(--hero-from), var(--hero-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ───────────────────────── Base ───────────────────────── */
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -21,6 +210,59 @@ html {
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  transition:
+    background-color 300ms var(--ease-base),
+    color 300ms var(--ease-base);
+}
+
+/* Subtle grain so flat surfaces are not dead flat. Not a gradient. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
 }

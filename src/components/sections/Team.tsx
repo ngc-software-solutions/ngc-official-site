@@ -64,21 +64,21 @@ export default function Team() {
   return (
     <section
       id="equipo"
-      className="relative py-28 px-6 overflow-hidden timeline-view animate-blurred-fade-in animate-range-[entry_0%_contain_1%] bg-[#f0f7fb] border-t-4 border-b-4 border-accent"
+      className="relative py-28 px-6 overflow-hidden timeline-view animate-blurred-fade-in animate-range-[entry_0%_contain_1%] bg-surface-alt"
     >
       <div className="relative z-10 mx-auto max-w-5xl">
         <div className="mb-16 text-center">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#c5dbe8] bg-white/60 px-4 py-1.5 text-xs text-[#4a6a80] backdrop-blur-sm">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs text-muted backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             Quiénes somos
           </div>
 
-          <h2 className="font-display mb-4 text-4xl font-bold tracking-tight text-bg md:text-5xl">
+          <h2 className="mb-4 text-4xl font-bold tracking-tight text-text md:text-5xl">
             Las personas detrás de{" "}
-            <span className="text-accent">cada proyecto</span>
+            <span className="text-text">cada proyecto</span>
           </h2>
 
-          <p className="mx-auto max-w-xl text-base leading-relaxed text-[#4a6a80]">
+          <p className="mx-auto max-w-xl text-base leading-relaxed text-muted">
             Tres fundadores que escriben código, toman decisiones técnicas y
             entregan resultados — sin intermediarios.
           </p>
@@ -88,12 +88,12 @@ export default function Team() {
           {team.map((member) => (
             <div
               key={member.name}
-              className="group relative flex flex-col items-center rounded-2xl border border-[#c5dbe8] bg-white/70 p-8 backdrop-blur-sm transition-all duration-300 hover:border-accent/50 hover:bg-white/90 hover:shadow-lg hover:shadow-accent/10"
+              className="group relative flex flex-col items-center rounded-2xl border border-border bg-surface p-8 backdrop-blur-sm transition-all duration-300 hover:border-accent/50 hover:bg-surface hover:shadow-lg hover:shadow-accent/10"
             >
               <div className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-accent/5" />
 
               <div className="relative mb-6">
-                <div className="size-24 rounded-full border-2 border-[#c5dbe8] overflow-hidden transition-colors duration-300 group-hover:border-accent/50">
+                <div className="size-24 rounded-full border-2 border-border overflow-hidden transition-colors duration-300 group-hover:border-accent/50">
                   <img
                     src={member.photo}
                     alt={member.name}
@@ -103,15 +103,15 @@ export default function Team() {
               </div>
 
               <div className="relative flex flex-col items-center text-center flex-1">
-                <p className="mb-1 text-xs font-medium text-accent tracking-wide uppercase">
+                <p className="mb-1 text-xs font-medium text-text tracking-wide uppercase">
                   {member.role}
                 </p>
 
-                <h3 className="mb-3 font-semibold text-bg leading-snug">
+                <h3 className="mb-3 font-semibold text-text leading-snug">
                   {member.name}
                 </h3>
 
-                <p className="text-sm leading-relaxed text-[#4a6a80] flex-1">
+                <p className="text-sm leading-relaxed text-muted flex-1">
                   {member.description}
                 </p>
 
@@ -120,7 +120,7 @@ export default function Team() {
                     href={member.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#4a6a80] hover:text-bg transition-colors duration-200"
+                    className="text-muted hover:text-text transition-colors duration-200"
                     aria-label={`GitHub de ${member.name}`}
                   >
                     <GitHubIcon className="size-5" />
@@ -129,7 +129,7 @@ export default function Team() {
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#4a6a80] hover:text-bg transition-colors duration-200"
+                    className="text-muted hover:text-text transition-colors duration-200"
                     aria-label={`LinkedIn de ${member.name}`}
                   >
                     <LinkedInIcon className="size-5" />
@@ -139,7 +139,7 @@ export default function Team() {
                       href={member.portfolio}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#4a6a80] hover:text-bg transition-colors duration-200"
+                      className="text-muted hover:text-text transition-colors duration-200"
                       aria-label={`Portafolio de ${member.name}`}
                     >
                       <GlobeAltIcon className="size-5" />

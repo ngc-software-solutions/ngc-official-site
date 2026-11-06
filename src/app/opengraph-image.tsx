@@ -10,7 +10,7 @@ export default function OGImage() {
   return new ImageResponse(
     <div
       style={{
-        background: "#0b1e2d",
+        background: "#F5F5F5",
         width: "100%",
         height: "100%",
         display: "flex",
@@ -38,20 +38,20 @@ export default function OGImage() {
       >
         <p
           style={{
-            color: "#e8f1f8",
+            color: "#000000",
             fontSize: "42px",
-            fontWeight: 700,
+            fontWeight: 600,
             margin: 0,
             textAlign: "center",
             lineHeight: 1.2,
           }}
         >
-          Desarrollo de Software a Medida
+          Desarrollo de software a medida
         </p>
 
         <p
           style={{
-            color: "#7a9bb5",
+            color: "#666666",
             fontSize: "22px",
             fontWeight: 400,
             margin: 0,
@@ -67,14 +67,14 @@ export default function OGImage() {
           display: "flex",
           alignItems: "center",
           gap: "10px",
-          background: "#259dc2",
+          background: "#122B3B",
           borderRadius: "999px",
           padding: "12px 32px",
         }}
       >
         <p
           style={{
-            color: "#ffffff",
+            color: "#FFFFFF",
             fontSize: "18px",
             fontWeight: 600,
             margin: 0,

@@ -9,17 +9,15 @@ export default function Portfolio() {
       id="portafolio"
       className="relative py-28 px-6 overflow-hidden timeline-view animate-blurred-fade-in animate-range-[entry_0%_contain_1%]"
     >
-      <div className="absolute inset-0 bg-linear-to-b from-bg via-surface/20 to-bg pointer-events-none" />
-
       <div className="relative z-10 mx-auto max-w-5xl">
         <div className="mb-20 text-center">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface/40 px-4 py-1.5 text-xs text-muted backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
             Nuestro trabajo
           </div>
-          <h2 className="font-display mb-4 text-4xl font-bold tracking-tight text-text md:text-5xl">
+          <h2 className="mb-4 text-4xl font-bold tracking-tight text-text md:text-5xl">
             Proyectos que{" "}
-            <span className="text-accent">generan impacto real</span>
+            <span className="text-text">generan impacto real</span>
           </h2>
           <p className="mx-auto max-w-xl text-base leading-relaxed text-muted">
             Cada proyecto resuelve un problema concreto de negocio. Aquí

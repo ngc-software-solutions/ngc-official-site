@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, Syne } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { siteMetadata } from "@/lib/data/metadata";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import UpButton from "@/components/ui/UpButton";
+import { themeInitScript } from "@/lib/theme";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -68,7 +64,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={`${inter.variable} ${syne.variable}`}>
+    <html lang="es" className={manrope.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="relative">
         <Navbar />
         {children}
