@@ -8,7 +8,6 @@ import Portfolio from "@/components/sections/Portfolio";
 import Team from "@/components/sections/Team";
 import Faq from "@/components/sections/Faq";
 import Contact from "@/components/sections/Contact";
-import Footer from "@/components/sections/Footer";
 import Workflow from "@/components/sections/Workflow";
 
 export default function Home() {
@@ -25,7 +24,6 @@ export default function Home() {
       <Team />
       <Faq />
       <Contact />
-      <Footer />
     </main>
   );
 }

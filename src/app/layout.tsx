@@ -4,6 +4,7 @@ import { siteMetadata } from "@/lib/data/metadata";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import UpButton from "@/components/ui/UpButton";
+import Footer from "@/components/sections/Footer";
 import { themeInitScript } from "@/lib/theme";
 
 const manrope = Manrope({
@@ -74,6 +75,7 @@ export default function RootLayout({
       <body className="relative">
         <Navbar />
         {children}
+        <Footer />
         <UpButton />
       </body>
     </html>

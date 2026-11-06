@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { WhatsappLogoIcon } from "@phosphor-icons/react";
 import Logo from "@/components/ui/Logo";
 import ThemeSelect from "@/components/ui/ThemeSelect";
@@ -81,14 +82,14 @@ export default function Navbar() {
         aria-label="Principal"
         className="relative z-10 flex w-full items-center gap-2 rounded-2xl border border-border bg-surface/70 py-2 pr-2 pl-3 backdrop-blur-xl lg:w-auto"
       >
-        <a
-          href="#inicio"
+        <Link
+          href="/#inicio"
           onClick={close}
           className="mr-2 flex items-center gap-2 rounded-lg"
         >
           <Logo className="size-8" />
           <span className="whitespace-nowrap title-4 text-text">Software Solutions</span>
-        </a>
+        </Link>
 
         <ul className="hidden items-center lg:flex">
           {navItems.map(({ id, label }) => {
@@ -96,7 +97,7 @@ export default function Navbar() {
             return (
               <li key={id}>
                 <a
-                  href={`#${id}`}
+                  href={`/#${id}`}
                   aria-current={current ? "location" : undefined}
                   className={`block rounded-lg px-3 py-2 title-4 transition-colors duration-300 ease-base ${
                     current
@@ -155,7 +156,7 @@ export default function Navbar() {
             >
               {item ? (
                 <a
-                  href={`#${item.id}`}
+                  href={`/#${item.id}`}
                   onClick={close}
                   aria-current={active === item.id ? "location" : undefined}
                   className={`block py-2 heading-4 ${
