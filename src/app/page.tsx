@@ -19,8 +19,8 @@ export default function Home() {
       <Services />
       <Tagline />
       <Models />
-      <Workflow />
       <Portfolio />
+      <Workflow />
       <Team />
       <Contact />
       <Footer />

@@ -10,8 +10,8 @@ import { siteMetadata } from "@/lib/data/metadata";
 const navItems = [
   { id: "servicios", label: "Servicios" },
   { id: "modelos", label: "Modelos" },
-  { id: "proceso", label: "Proceso" },
   { id: "portafolio", label: "Proyectos" },
+  { id: "proceso", label: "Proceso" },
   { id: "equipo", label: "Equipo" },
   { id: "contacto", label: "Contacto" },
 ];
