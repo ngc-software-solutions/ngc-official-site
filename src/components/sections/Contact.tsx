@@ -1,10 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, type UseFormRegisterReturn } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowRightIcon,
+  ClockIcon,
+  EnvelopeSimpleIcon,
+  MapPinIcon,
+  SealCheckIcon,
+  WhatsappLogoIcon,
+} from "@phosphor-icons/react";
+import Button from "@/components/ui/Button";
+import Reveal from "@/components/ui/Reveal";
 import { siteMetadata } from "@/lib/data/metadata";
 
 type SendState =
@@ -13,55 +22,104 @@ type SendState =
   | { kind: "sent"; nombre: string; email: string }
   | { kind: "error" };
 
-function WhatsAppIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-    </svg>
-  );
-}
-
 const schema = yup.object({
   nombre: yup
     .string()
-    .required("El nombre es obligatorio")
+    .required("Escribe tu nombre")
     .trim()
-    .min(2, "Mínimo 2 caracteres")
+    .min(2, "Escribe al menos 2 letras")
     .matches(
       /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s''-]+$/,
-      "Solo se permiten letras y espacios",
+      "Usa solo letras y espacios",
     ),
   email: yup
     .string()
-    .required("El correo es obligatorio")
-    .email("Ingresa un correo válido"),
+    .required("Escribe tu correo")
+    .email("Revisa el correo, parece incompleto"),
   empresa: yup
     .string()
-    .required("La empresa es obligatoria")
+    .required("Escribe el nombre de tu empresa")
     .trim()
-    .min(2, "Mínimo 2 caracteres")
+    .min(2, "Escribe al menos 2 caracteres")
     .matches(
       /^[a-zA-Z0-9áéíóúÁÉÍÓÚüÜñÑ\s.,&''-]+$/,
-      "Caracteres no permitidos en el nombre de empresa",
+      "Quita los caracteres especiales del nombre",
     ),
   mensaje: yup
     .string()
-    .required("El mensaje es obligatorio")
+    .required("Cuéntanos qué necesitas")
     .trim()
-    .min(10, "Mínimo 10 caracteres"),
+    .min(10, "Agrega un poco más de detalle, mínimo 10 caracteres"),
 });
 
 type FormValues = yup.InferType<typeof schema>;
 
-const inputBase =
-  "w-full rounded-xl border bg-surface/30 px-4 py-3 text-sm text-text placeholder:text-muted/40 backdrop-blur-sm transition-colors duration-200 focus:outline-none";
-const inputNormal = `${inputBase} border-border focus:border-text/40`;
-const inputError = `${inputBase} border-red-500/50 focus:border-red-500/60`;
+const promises = [
+  { Icon: SealCheckIcon, text: "Primer diagnóstico sin costo" },
+  { Icon: ClockIcon, text: "Respuesta en menos de 24 horas" },
+  { Icon: MapPinIcon, text: "Cuernavaca, Morelos · Remoto en todo México" },
+];
+
+function Field({
+  id,
+  label,
+  error,
+  registration,
+  textarea = false,
+  ...rest
+}: {
+  id: string;
+  label: string;
+  error?: string;
+  registration: UseFormRegisterReturn;
+  textarea?: boolean;
+  type?: string;
+  placeholder?: string;
+  autoComplete?: string;
+}) {
+  const className = `w-full rounded-lg border bg-bg px-4 py-3 body-6 text-text placeholder:text-muted transition-colors duration-300 ease-base ${
+    error
+      ? "border-red-600 dark:border-red-400"
+      : "border-border hover:border-muted focus:border-text"
+  }`;
+  const describedBy = error ? `${id}-error` : undefined;
+
+  return (
+    <div>
+      <label htmlFor={id} className="mb-2 block title-4 text-text">
+        {label}
+      </label>
+      {textarea ? (
+        <textarea
+          id={id}
+          rows={5}
+          aria-invalid={!!error}
+          aria-describedby={describedBy}
+          className={`resize-none ${className}`}
+          {...rest}
+          {...registration}
+        />
+      ) : (
+        <input
+          id={id}
+          aria-invalid={!!error}
+          aria-describedby={describedBy}
+          className={className}
+          {...rest}
+          {...registration}
+        />
+      )}
+      {error && (
+        <p
+          id={`${id}-error`}
+          className="mt-2 caption-5 text-red-700 dark:text-red-400"
+        >
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
 
 export default function Contact() {
   const {
@@ -94,148 +152,119 @@ export default function Contact() {
   return (
     <section
       id="contacto"
-      className="relative py-28 px-6 z-10 timeline-view animate-blurred-fade-in animate-range-[entry_0%_contain_1%]"
+      aria-labelledby="contacto-titulo"
+      className="px-6 py-24"
     >
-      <div className="relative z-10 mx-auto max-w-5xl">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24 lg:items-start">
-          <div className="flex flex-col gap-6">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-surface/40 px-4 py-1.5 text-xs text-muted backdrop-blur-sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Hablemos
-            </div>
+      <div className="mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+        <Reveal>
+          <p className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3 py-1 caption-4 text-muted">
+            <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
+            Contacto
+          </p>
+          <h2
+            id="contacto-titulo"
+            className="mt-6 max-w-170 heading-4 text-text md:heading-2"
+          >
+            Cuéntanos qué proceso quieres ordenar
+          </h2>
+          <p className="mt-6 max-w-md body-3 text-muted">
+            Escríbenos por WhatsApp o déjanos tus datos. Agendamos tu
+            diagnóstico y te decimos qué conviene construir.
+          </p>
 
-            <div>
-              <h2 className="text-4xl font-bold tracking-tight text-text md:text-5xl leading-tight">
-                ¿Tienes un proyecto{" "}
-                <span className="text-text">en mente?</span>
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted">
-                Respondemos en menos de 24 horas. Cuéntanos qué necesitas y te
-                decimos exactamente cómo podemos ayudarte.
-              </p>
-            </div>
+          <ul className="mt-8 flex flex-col gap-3">
+            {promises.map(({ Icon, text }) => (
+              <li key={text} className="flex items-center gap-3 body-5 text-text">
+                <span className="flex size-8 items-center justify-center rounded-lg border border-border bg-surface text-accent-icon">
+                  <Icon size={16} aria-hidden="true" />
+                </span>
+                {text}
+              </li>
+            ))}
+          </ul>
 
-            <div className="flex flex-col gap-3 pt-2">
-              <p className="text-sm text-muted/70">
-                ¿Prefieres escribirnos directo?
-              </p>
-              <a
-                href={siteMetadata.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex w-fit items-center gap-3 rounded-xl border border-border bg-surface/30 px-5 py-3 text-sm font-medium text-text backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-surface/60 hover:text-text"
-              >
-                <WhatsAppIcon className="size-5 text-text" />
-                Escríbenos por WhatsApp
-                <ArrowLongRightIcon className="size-4 text-muted" />
-              </a>
-            </div>
+          <div className="mt-10 flex flex-col items-start gap-4">
+            <Button href={siteMetadata.whatsappUrl}>
+              <WhatsappLogoIcon size={20} weight="bold" aria-hidden="true" />
+              Escríbenos por WhatsApp
+            </Button>
+            <a
+              href={`mailto:${siteMetadata.email}`}
+              className="inline-flex items-center gap-2 body-5 text-muted underline decoration-border underline-offset-4 transition-colors duration-300 ease-base hover:text-text hover:decoration-text"
+            >
+              <EnvelopeSimpleIcon size={16} aria-hidden="true" />
+              {siteMetadata.email}
+            </a>
           </div>
+        </Reveal>
 
+        <Reveal delay={120}>
           <form
             onSubmit={handleSubmit(onSubmit)}
             noValidate
-            className="relative flex flex-col gap-5"
+            aria-label="Formulario de contacto"
+            className="relative flex flex-col gap-6 rounded-2xl border border-border bg-surface p-6 shadow-xl shadow-black/5 md:p-10 dark:shadow-none"
           >
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="nombre"
-                  className="mb-1.5 block text-xs font-medium text-muted"
-                >
-                  Nombre completo
-                </label>
-                <input
-                  id="nombre"
-                  type="text"
-                  placeholder="Juan Pérez"
-                  className={errors.nombre ? inputError : inputNormal}
-                  {...register("nombre")}
-                />
-                {errors.nombre && (
-                  <p className="mt-1.5 text-xs text-red-700 dark:text-red-400">
-                    {errors.nombre.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-1.5 block text-xs font-medium text-muted"
-                >
-                  Correo electrónico
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  placeholder="juan@empresa.com"
-                  className={errors.email ? inputError : inputNormal}
-                  {...register("email")}
-                />
-                {errors.email && (
-                  <p className="mt-1.5 text-xs text-red-700 dark:text-red-400">
-                    {errors.email.message}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            <div>
-              <label
-                htmlFor="empresa"
-                className="mb-1.5 block text-xs font-medium text-muted"
-              >
-                Empresa u organización
-              </label>
-              <input
-                id="empresa"
-                type="text"
-                placeholder="Nombre de tu empresa"
-                className={errors.empresa ? inputError : inputNormal}
-                {...register("empresa")}
+            <div className="grid gap-6 sm:grid-cols-2">
+              <Field
+                id="nombre"
+                label="Nombre completo"
+                placeholder="Ana López"
+                autoComplete="name"
+                error={errors.nombre?.message}
+                registration={register("nombre")}
               />
-              {errors.empresa && (
-                <p className="mt-1.5 text-xs text-red-700 dark:text-red-400">
-                  {errors.empresa.message}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label
-                htmlFor="mensaje"
-                className="mb-1.5 block text-xs font-medium text-muted"
-              >
-                Mensaje
-              </label>
-              <textarea
-                id="mensaje"
-                rows={5}
-                placeholder="Cuéntanos qué necesitas construir o mejorar..."
-                className={`resize-none ${errors.mensaje ? inputError : inputNormal}`}
-                {...register("mensaje")}
+              <Field
+                id="email"
+                label="Correo electrónico"
+                type="email"
+                placeholder="ana@tuempresa.com"
+                autoComplete="email"
+                error={errors.email?.message}
+                registration={register("email")}
               />
-              {errors.mensaje && (
-                <p className="mt-1.5 text-xs text-red-700 dark:text-red-400">
-                  {errors.mensaje.message}
-                </p>
-              )}
             </div>
+            <Field
+              id="empresa"
+              label="Empresa"
+              placeholder="Nombre de tu empresa"
+              autoComplete="organization"
+              error={errors.empresa?.message}
+              registration={register("empresa")}
+            />
+            <Field
+              id="mensaje"
+              label="¿Qué necesitas?"
+              placeholder="Por ejemplo: hoy llevamos las requisiciones en Excel y queremos un sistema con aprobaciones."
+              textarea
+              error={errors.mensaje?.message}
+              registration={register("mensaje")}
+            />
 
             {/* Honeypot: hidden from people, bots fill it in. */}
-            <div aria-hidden="true" className="absolute -left-2499.75 size-px overflow-hidden">
+            <div
+              aria-hidden="true"
+              className="sr-only"
+            >
               <label htmlFor="website">No llenar este campo</label>
-              <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+              <input
+                id="website"
+                name="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
             </div>
 
             <button
               type="submit"
               disabled={state.kind === "sending"}
-              className="inline-flex items-center cursor-pointer justify-center gap-2 rounded-xl bg-accent px-3 py-2 button-md text-on-accent transition duration-300 ease-base hover:opacity-90 active:scale-[0.98] disabled:cursor-wait disabled:opacity-60"
+              className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-accent px-3 py-2 button-md text-on-accent transition duration-300 ease-base hover:opacity-90 active:scale-[0.98] disabled:cursor-wait disabled:opacity-60"
             >
-              {state.kind === "sending" ? "Enviando tu proyecto…" : "Enviar mi proyecto"}
-              <ArrowLongRightIcon className="size-4" />
+              {state.kind === "sending"
+                ? "Enviando tu proyecto…"
+                : "Enviar mi proyecto"}
+              <ArrowRightIcon size={16} weight="bold" aria-hidden="true" />
             </button>
 
             <div aria-live="polite" className="min-h-5">
@@ -249,7 +278,12 @@ export default function Contact() {
                 <p className="body-6 text-red-700 dark:text-red-400">
                   No pudimos enviar tu mensaje. Intenta de nuevo en unos
                   minutos o{" "}
-                  <a href={siteMetadata.whatsappUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
+                  <a
+                    href={siteMetadata.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2"
+                  >
                     escríbenos por WhatsApp
                   </a>
                   .
@@ -257,7 +291,7 @@ export default function Contact() {
               )}
             </div>
           </form>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
