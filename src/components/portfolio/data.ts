@@ -39,7 +39,7 @@ export const projects: Project[] = [
       "Digitaliza la operación de Clínica San Juan: pacientes, expedientes clínicos, agenda de consultas y reportes, con acceso distinto para médicos, enfermería y administración.",
     status: "En producción",
     stack: ["React", "Spring Boot", "MySQL", "Docker"],
-    videoId: "IW0GanjK8fk",
+    videoId: "F71Kk-L_1Cg",
     href: "https://medonline.com.mx",
   },
   {
